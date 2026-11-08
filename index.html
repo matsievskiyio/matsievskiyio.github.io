@@ -8,8 +8,14 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://matsievskiyio.github.io/">
 <meta property="og:title" content="Андрей Мациевский, видеомонтаж">
-<meta property="og:description" content="Reels, видео для бизнеса и YouTube, моушн-дизайн и анимация логотипов.">
-<meta property="og:image" content="https://matsievskiyio.github.io/media/me.jpg">
+<meta property="og:description" content="Монтаж, после которого ролики досматривают. Reels, видео для бизнеса и YouTube, моушн-дизайн.">
+<meta property="og:image" content="https://matsievskiyio.github.io/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#efe4d8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Unbounded:wght@600;800;900&display=swap">
 <style>
@@ -288,9 +294,9 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
         <a class="cta" href="https://t.me/a_ndrey_MR" target="_blank" rel="noopener">Написать в Telegram</a>
       </div>
       <div class="stack" aria-hidden="true">
-        <video class="auto" muted loop playsinline preload="metadata" poster="media/sp1.jpg" src="media/sp1.mp4"></video>
-        <video class="auto" muted loop playsinline preload="metadata" poster="media/cl1.jpg" src="media/cl1.mp4"></video>
-        <video class="auto" muted loop playsinline preload="metadata" poster="media/chem.jpg" src="media/chem.mp4"></video>
+        <video class="auto" muted loop playsinline preload="metadata" poster="media/sp1.jpg" src="media/prev/sp1.mp4"></video>
+        <video class="auto" muted loop playsinline preload="metadata" poster="media/cl1.jpg" src="media/prev/cl1.mp4"></video>
+        <video class="auto" muted loop playsinline preload="metadata" poster="media/chem.jpg" src="media/prev/chem.mp4"></video>
       </div>
     </div>
   </div>
@@ -428,7 +434,7 @@ document.querySelectorAll('[data-clips]').forEach(function (box) {
     var c = CLIPS[id], b = document.createElement('button');
     b.type = 'button'; b.className = 'clip'; b.dataset.id = id;
     b.setAttribute('aria-label', 'Смотреть со звуком: ' + c[0]);
-    b.innerHTML = '<span class="frame"><img src="media/' + id + '.jpg" alt=""><video muted loop playsinline preload="none" src="media/' + id + '.mp4"></video><span class="play"></span></span>';
+    b.innerHTML = '<span class="frame"><img src="media/' + id + '.jpg" alt=""><video muted loop playsinline preload="none" src="media/prev/' + id + '.mp4"></video><span class="play"></span></span>';
     var v = b.querySelector('video');
     b.addEventListener('mouseenter', function () { var p = v.play(); if (p) p.catch(function () {}); });
     v.addEventListener('playing', function () { b.classList.add('live'); });
@@ -602,7 +608,7 @@ function resumeHero() {
 }
 resumeHero();
 document.querySelectorAll('video.auto').forEach(function (v) {
-  var m = v.getAttribute('src').match(/media\/(.+)\.mp4/);
+  var m = v.getAttribute('src').match(/([^\/]+)\.mp4$/);
   v.style.cursor = 'pointer';
   v.addEventListener('click', function () { if (m) openClip(m[1]); });
 });
