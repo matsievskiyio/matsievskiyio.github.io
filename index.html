@@ -41,14 +41,18 @@ html { scroll-padding-top: 76px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 .top { position: sticky; top: 0; z-index: 10; background: rgba(251, 247, 242, .94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(46, 36, 32, .12); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .top .bar { max-width: 1200px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 64px; }
-.brand { font: 800 15px/1.1 var(--display); text-transform: uppercase; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.brand { display: inline-flex; align-items: center; min-height: 44px; font: 800 15px/1.1 var(--display); text-transform: uppercase; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.skip { position: absolute; z-index: 30; left: 16px; top: -80px; background: var(--ink); color: var(--paper); font: 600 16px/1 var(--body); padding: 14px 18px; border-radius: 10px; text-decoration: none; }
+.skip:focus { top: 12px; }
+.cta:focus-visible, .ghost:focus-visible, .skip:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.rail:focus-visible { outline: 3px solid var(--wine); outline-offset: 6px; border-radius: 14px; }
 .brand b { color: var(--wine); }
 .menu { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
 .menu a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; white-space: nowrap; padding-block: 6px; border-bottom: 2px solid transparent; }
 .menu a:hover, .menu a.on { border-color: var(--wine); color: var(--wine); }
-.menu a.tg { background: var(--wine); color: var(--paper); border: 0; border-radius: 99px; padding: 10px 18px; font: 800 13px/1.2 var(--display); text-transform: uppercase; }
+.menu a.tg { background: var(--wine); color: var(--paper); border: 0; border-radius: 99px; padding: 10px 18px; font: 800 14px/1.2 var(--display); text-transform: uppercase; }
 .menu a.tg:hover { color: var(--paper); filter: brightness(1.1); }
-.burger { all: unset; display: none; cursor: pointer; font: 800 13px/1 var(--display); text-transform: uppercase; color: var(--ink); border: 2px solid var(--ink); border-radius: 99px; min-height: 44px; box-sizing: border-box; padding: 14px 16px; }
+.burger { all: unset; display: none; cursor: pointer; font: 800 14px/1 var(--display); text-transform: uppercase; color: var(--ink); border: 2px solid var(--ink); border-radius: 99px; min-height: 44px; box-sizing: border-box; padding: 14px 16px; }
 .burger:focus-visible, .menu a:focus-visible, .brand:focus-visible { outline: 3px solid var(--wine); outline-offset: 3px; }
 @media (max-width: 1099px) {
   .top .bar { min-height: 56px; }
@@ -152,7 +156,7 @@ h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; l
 .motion { background: var(--pink); color: var(--wine); }
 .showmore { justify-self: start; cursor: pointer; background: transparent; }
 .stick { position: fixed; z-index: 5; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 10px 26px rgba(46, 36, 32, .32); padding: 15px 22px; }
-@media (max-width: 819px) { .stack { order: -1; } .stick { font-size: 13px; padding: 15px 20px; min-height: 48px; box-sizing: border-box; box-shadow: 0 6px 16px rgba(46, 36, 32, .28); } }
+@media (max-width: 819px) { .stack { order: -1; } .stick { font-size: 14px; padding: 15px 20px; min-height: 48px; box-sizing: border-box; box-shadow: 0 6px 16px rgba(46, 36, 32, .28); } }
 .motion .sub, .motion .cap { color: var(--ink); }
 .mosaic { display: grid; gap: 22px; }
 @media (min-width: 760px) { .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mosaic .clip:first-child { grid-column: 1 / -1; } }
@@ -194,14 +198,14 @@ h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; l
 .rail.notes { grid-auto-columns: clamp(270px, 30vw, 350px); align-items: stretch; }
 .note { scroll-snap-align: start; background: var(--paper); border-radius: 14px; padding: 22px; display: grid; gap: 8px; align-content: start; min-width: 0; }
 .note .stars { color: #b3700c; font-size: 18px; letter-spacing: 2px; line-height: 1; }
-.note .when { font-size: 13px; opacity: .7; }
+.note .when { font-size: 14px; opacity: .75; }
 .note .srv { font-size: 14px; font-weight: 600; }
 .note .who { font: 800 17px/1.2 var(--display); color: var(--wine); }
 .note p { margin: 0; font-size: 16px; line-height: 1.4; }
 .note .price { font-size: 14px; opacity: .8; }
 .note .price b { display: block; font-size: 16px; font-weight: 600; opacity: 1; }
 .actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; }
-.ghost { display: inline-flex; align-items: center; color: var(--wine); border: 2px solid var(--wine); border-radius: 99px; padding: 14px 24px; font: 800 clamp(13px, 1.5vw, 16px)/1.2 var(--display); text-transform: uppercase; text-decoration: none; transition: background .18s, color .18s; }
+.ghost { display: inline-flex; align-items: center; color: var(--wine); border: 2px solid var(--wine); border-radius: 99px; padding: 14px 24px; font: 800 clamp(14px, 1.5vw, 16px)/1.2 var(--display); text-transform: uppercase; text-decoration: none; transition: background .18s, color .18s; }
 .ghost:hover { background: var(--wine); color: var(--paper); }
 .ghost.nick { text-transform: none; font-size: clamp(15px, 2.2vw, 22px); padding-inline: 28px; }
 
@@ -227,7 +231,7 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
 #lb.failed { max-width: min(92vw, 420px); }
 #lb.failed video { display: none; }
 #lb.failed .lb-bar { flex-direction: column-reverse; align-items: flex-start; }
-#close { all: unset; cursor: pointer; background: var(--yellow); color: var(--ink); font: 800 13px var(--display); text-transform: uppercase; padding: 10px 16px; border-radius: 99px; flex: none; }
+#close { all: unset; cursor: pointer; background: var(--yellow); color: var(--ink); font: 800 14px var(--display); text-transform: uppercase; padding: 10px 16px; border-radius: 99px; flex: none; }
 #close:focus-visible { outline: 3px solid var(--paper); outline-offset: 2px; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -255,6 +259,7 @@ ym(114133771, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: t
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<a class="skip" href="#works">Перейти к работам</a>
 <header class="top" id="top">
   <div class="bar">
     <a class="brand" href="#">Андрей <b>Мациевский</b></a>
