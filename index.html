@@ -30,16 +30,40 @@ h2 { font-weight: 800; font-size: clamp(32px, 7.4vw, 92px); line-height: 1; lett
 .sub { margin: 0; max-width: 54ch; font-size: clamp(17px, 2vw, 20px); }
 .head { display: grid; gap: 14px; }
 
+/* Header */
+html { scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+.top { position: sticky; top: 0; z-index: 10; background: rgba(251, 247, 242, .94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(46, 36, 32, .12); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.top .bar { max-width: 1200px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 64px; }
+.brand { font: 800 15px/1.1 var(--display); text-transform: uppercase; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.brand b { color: var(--wine); }
+.menu { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+.menu a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; white-space: nowrap; padding-block: 6px; border-bottom: 2px solid transparent; }
+.menu a:hover, .menu a.on { border-color: var(--wine); color: var(--wine); }
+.menu a.tg { background: var(--wine); color: var(--paper); border: 0; border-radius: 99px; padding: 10px 18px; font: 800 13px/1.2 var(--display); text-transform: uppercase; }
+.menu a.tg:hover { color: var(--paper); filter: brightness(1.1); }
+.burger { all: unset; display: none; cursor: pointer; font: 800 13px/1 var(--display); text-transform: uppercase; color: var(--ink); border: 2px solid var(--ink); border-radius: 99px; padding: 10px 16px; }
+.burger:focus-visible, .menu a:focus-visible, .brand:focus-visible { outline: 3px solid var(--wine); outline-offset: 3px; }
+@media (max-width: 1099px) {
+  .top .bar { min-height: 56px; }
+  .burger { display: inline-block; }
+  .menu { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); border-bottom: 1px solid rgba(46, 36, 32, .12); box-shadow: 0 14px 24px rgba(46, 36, 32, .12); padding: 8px max(16px, env(safe-area-inset-left, 0px)) 18px; }
+  .top.open .menu { display: flex; }
+  .menu a { font-size: 18px; padding: 14px 0; border-bottom: 1px solid rgba(46, 36, 32, .1); }
+  .menu a.tg { margin-top: 14px; text-align: center; padding: 16px; font-size: 14px; }
+}
+@media (min-width: 1100px) { .stick { display: none !important; } }
+
 /* Hero */
 .hero { overflow-x: clip; background: var(--cobalt); color: var(--ink); padding-block: clamp(36px, 6vw, 72px) clamp(48px, 7vw, 88px); }
-h1 { font-weight: 900; font-size: clamp(30px, 9.6vw, 118px); line-height: 0.98; letter-spacing: -0.03em; }
-h1 span { display: block; }
-h1 .y { color: var(--ink); }
-h1 .role { display: inline-block; margin-top: .3em; background: var(--wine); color: var(--paper); font-size: .62em; line-height: 1; letter-spacing: -0.01em; padding: .22em .4em; border-radius: .16em; transform: rotate(-1.2deg); }
+h1 { font-weight: 900; font-size: clamp(28px, 5.4vw, 68px); line-height: 1.04; letter-spacing: -0.025em; max-width: 19ch; text-wrap: balance; }
+.eyebrow { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; font: 800 clamp(15px, 1.7vw, 19px)/1.2 var(--display); text-transform: uppercase; }
+.eyebrow .role { background: var(--wine); color: var(--paper); padding: .35em .6em; border-radius: .3em; transform: rotate(-1.2deg); }
+.hero-head { display: grid; gap: clamp(14px, 2vw, 22px); }
 .hero-grid { display: grid; gap: 40px; align-items: center; }
 @media (min-width: 820px) { .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 .hero-copy { display: grid; gap: 22px; justify-items: start; min-width: 0; }
-.lead { margin: 0; font-size: clamp(19px, 2.4vw, 25px); line-height: 1.35; font-weight: 500; }
+.lead { margin: 0; font-size: clamp(17px, 1.9vw, 21px); line-height: 1.45; font-weight: 500; max-width: 46ch; }
 .tools { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .tools li { border: 2px solid var(--ink); border-radius: 99px; padding: 7px 16px; font-weight: 600; font-size: 15px; line-height: 1.2; }
 .where { margin: 0; font-size: 15px; opacity: .88; }
@@ -191,13 +215,30 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
 </style>
 </head>
 <body>
+<header class="top" id="top">
+  <div class="bar">
+    <a class="brand" href="#">Андрей <b>Мациевский</b></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu">Меню</button>
+    <nav class="menu" id="menu" aria-label="Разделы сайта">
+      <a href="#works">Работы</a>
+      <a href="#about">Обо мне</a>
+      <a href="#prices">Цены</a>
+      <a href="#steps">Как работаю</a>
+      <a href="#reviews">Отзывы</a>
+      <a class="tg" href="https://t.me/a_ndrey_MR" target="_blank" rel="noopener">Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
 
 <section class="band hero">
   <div class="in">
-    <h1><span>Андрей</span><span class="y">Мациевский</span><span class="role">Видеомонтажёр</span></h1>
+    <div class="hero-head">
+      <p class="eyebrow"><span class="role">Видеомонтажёр</span></p>
+      <h1>Превращаю сырые записи в ролики, которые работают на ваш бизнес</h1>
+    </div>
     <div class="hero-grid">
       <div class="hero-copy">
-        <p class="lead">Монтирую видеоролики любого формата: для бизнеса, YouTube, соцсетей и личных историй. Добавляю графику и анимацию.</p>
+        <p class="lead">Reels, интервью с экспертами, YouTube-выпуски и моушн-дизайн. Монтаж в ритм, звук, цветокоррекция и графика.</p>
         <ul class="tools" aria-label="Программы">
           <li>Premiere Pro</li>
           <li>After Effects</li>
@@ -224,7 +265,7 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
   <span>Reels</span><i>✦</i><span>Промо</span><i>✦</i><span>YouTube</span><i>✦</i><span>Моушн-дизайн</span><i>✦</i><span>Логотипы</span><i>✦</i><span>Интро</span><i>✦</i><span>Саунд-дизайн</span><i>✦</i><span>Цветокоррекция</span><i>✦</i>
 </div></div>
 
-<section class="band promo" aria-labelledby="t1">
+<section class="band promo" id="works" aria-labelledby="t1">
   <div class="in">
     <div class="head"><h2 id="t1">Промо и нарезки</h2><p class="sub">Спортивные промо и динамичные нарезки, которые цепляют с первых секунд: монтаж в ритм музыки, цветокоррекция и саунд-дизайн.</p></div>
     <div class="mosaic h" data-clips="sports,letsgo,robot"></div>
@@ -260,7 +301,7 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
   </div>
 </section>
 
-<section class="band about" aria-labelledby="t9">
+<section class="band about" id="about" aria-labelledby="t9">
   <div class="in about-grid">
     <img class="me" src="media/me.jpg" alt="Андрей Мациевский">
     <div class="about-text">
@@ -286,7 +327,7 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
   </div>
 </section>
 
-<section class="band prices" aria-labelledby="t10">
+<section class="band prices" id="prices" aria-labelledby="t10">
   <div class="in">
     <div class="head"><h2 id="t10">Цены</h2><p class="sub">Точная стоимость зависит от задачи и материала. Назову её сразу, как только посмотрю ваше видео.</p></div>
     <ul class="price-cards">
@@ -297,7 +338,7 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
   </div>
 </section>
 
-<section class="band steps-band" aria-labelledby="t11">
+<section class="band steps-band" id="steps" aria-labelledby="t11">
   <div class="in">
     <h2 id="t11">Как я работаю</h2>
     <ol class="steps">
@@ -309,7 +350,7 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
   </div>
 </section>
 
-<section class="band said" aria-labelledby="t6">
+<section class="band said" id="reviews" aria-labelledby="t6">
   <div class="in">
     <h2 id="t6">Клиенты пишут</h2>
     <p class="sub">30 отзывов на Профи.ру, у всех 5 звёзд. Здесь коротко о каждом.</p>
@@ -450,6 +491,22 @@ document.querySelectorAll('.rail').forEach(function (rail) {
     stick.hidden = seen.size > 0;
   });
   targets.forEach(function (t) { io.observe(t); });
+})();
+(function () {
+  var top = document.getElementById('top'), burger = top.querySelector('.burger');
+  function setOpen(v) { top.classList.toggle('open', v); burger.setAttribute('aria-expanded', v ? 'true' : 'false'); burger.textContent = v ? 'Закрыть' : 'Меню'; }
+  burger.addEventListener('click', function () { setOpen(!top.classList.contains('open')); });
+  top.querySelectorAll('.menu a, .brand').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  var links = {};
+  top.querySelectorAll('.menu a[href^="#"]').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      Object.keys(links).forEach(function (k) { links[k].classList.toggle('on', k === e.target.id); });
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  Object.keys(links).forEach(function (k) { var el = document.getElementById(k); if (el) spy.observe(el); });
 })();
 var lb = document.getElementById('lb'), lv = document.getElementById('lb-video');
 function openClip(id) {
