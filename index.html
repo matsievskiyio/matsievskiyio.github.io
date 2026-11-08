@@ -60,26 +60,26 @@ h1 .acc { color: var(--wine); background: linear-gradient(var(--yellow), var(--y
 .top { transition: box-shadow .3s; }
 .top.scrolled { box-shadow: 0 8px 24px rgba(46, 36, 32, .1); }
 .stack { transition: transform .5s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
-.motion .hero .eyebrow, .motion .hero h1 .w, .motion .hero-copy > *, .motion .stack video { opacity: 0; }
-.motion .hero.go .eyebrow { animation: drop .7s cubic-bezier(.2, .8, .2, 1.2) .05s both; }
-.motion .hero.go h1 .w { animation: rise .8s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(.15s + var(--i) * .06s); }
-.motion .hero.go h1 .acc { background-size: 0% .2em; animation: rise .8s cubic-bezier(.2, .8, .2, 1) both, mark .6s cubic-bezier(.6, 0, .2, 1) both; animation-delay: calc(.15s + var(--i) * .06s), calc(1s + var(--k) * .14s); }
-.motion .hero.go .hero-copy > * { animation: up .8s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(.75s + var(--i) * .09s); }
-.motion .hero.go .stack video { animation: deal 1s cubic-bezier(.2, .9, .25, 1.1) both; }
-.motion .hero.go .stack video:nth-child(1) { animation-delay: .55s; }
-.motion .hero.go .stack video:nth-child(2) { animation-delay: .4s; }
-.motion .hero.go .stack video:nth-child(3) { animation-delay: .7s; }
+.anim .hero .eyebrow, .anim .hero h1 .w, .anim .hero-copy > *, .anim .stack video { opacity: 0; }
+.anim .hero.go .eyebrow { animation: drop .7s cubic-bezier(.2, .8, .2, 1.2) .05s both; }
+.anim .hero.go h1 .w { animation: rise .8s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(.15s + var(--i) * .06s); }
+.anim .hero.go h1 .acc { background-size: 0% .2em; animation: rise .8s cubic-bezier(.2, .8, .2, 1) both, mark .6s cubic-bezier(.6, 0, .2, 1) both; animation-delay: calc(.15s + var(--i) * .06s), calc(1s + var(--k) * .14s); }
+.anim .hero.go .hero-copy > * { animation: up .8s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(.75s + var(--i) * .09s); }
+.anim .hero.go .stack video { animation: deal 1s cubic-bezier(.2, .9, .25, 1.1) both; }
+.anim .hero.go .stack video:nth-child(1) { animation-delay: .55s; }
+.anim .hero.go .stack video:nth-child(2) { animation-delay: .4s; }
+.anim .hero.go .stack video:nth-child(3) { animation-delay: .7s; }
 @keyframes drop { from { opacity: 0; translate: 0 -24px; rotate: -8deg; } to { opacity: 1; translate: 0 0; rotate: 0deg; } }
 @keyframes rise { from { opacity: 0; translate: 0 .7em; rotate: 3deg; } to { opacity: 1; translate: 0 0; rotate: 0deg; } }
 @keyframes up { from { opacity: 0; translate: 0 22px; } to { opacity: 1; translate: 0 0; } }
 @keyframes deal { from { opacity: 0; translate: 0 90px; scale: .85; } to { opacity: 1; translate: 0 0; scale: 1; } }
 @keyframes mark { from { background-size: 0% .2em; } to { background-size: 100% .2em; } }
-.motion .rv { opacity: 0; translate: 0 34px; transition: opacity .8s cubic-bezier(.2, .7, .2, 1), translate .8s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s); }
-.motion h2.rv { opacity: 1; translate: 0 .35em; clip-path: inset(0 0 100% 0); transition: clip-path .8s cubic-bezier(.6, 0, .2, 1), translate .8s cubic-bezier(.2, .7, .2, 1); }
-.motion .rv.shown { opacity: 1; translate: 0 0; }
-.motion h2.rv.shown { clip-path: inset(-.2em -.2em -.3em -.2em); }
-.motion .cta { animation: pulse 3.2s ease-in-out 2.4s infinite; }
-.motion .stick { animation: none; }
+.anim .rv { opacity: 0; translate: 0 34px; transition: opacity .8s cubic-bezier(.2, .7, .2, 1), translate .8s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s); }
+.anim h2.rv { opacity: 1; translate: 0 .35em; clip-path: inset(0 0 100% 0); transition: clip-path .8s cubic-bezier(.6, 0, .2, 1), translate .8s cubic-bezier(.2, .7, .2, 1); }
+.anim .rv.shown { opacity: 1; translate: 0 0; }
+.anim h2.rv.shown { clip-path: inset(-.2em -.2em -.3em -.2em); }
+.anim .cta { animation: pulse 3.2s ease-in-out 2.4s infinite; }
+.anim .stick { animation: none; }
 @keyframes pulse { 0%, 82%, 100% { box-shadow: 0 0 0 0 rgba(165, 51, 46, 0); } 88% { box-shadow: 0 0 0 10px rgba(165, 51, 46, .18); } 96% { box-shadow: 0 0 0 16px rgba(165, 51, 46, 0); } }
 
 /* Hero */
@@ -164,9 +164,9 @@ h1 { font-weight: 900; font-size: clamp(28px, 5.4vw, 68px); line-height: 1.04; l
 .mosaic { display: grid; gap: 22px; }
 @media (min-width: 760px) { .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mosaic .clip:first-child { grid-column: 1 / -1; } }
 
-.logos { background: var(--paper); color: var(--wine); }
 .five { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
-.logos .cap, .logos .sub { color: var(--ink); }
+.subhead { display: grid; gap: 8px; margin-top: clamp(8px, 2vw, 20px); }
+.subhead h3 { margin: 0; font: 800 clamp(20px, 2.6vw, 30px)/1.1 var(--display); text-transform: uppercase; color: var(--wine); }
 
 .serv { background: var(--cobalt); color: var(--ink); }
 .prices { background: var(--paper); color: var(--ink); }
@@ -203,6 +203,7 @@ h1 { font-weight: 900; font-size: clamp(28px, 5.4vw, 68px); line-height: 1.04; l
 .note .stars { color: #e39a1f; font-size: 18px; letter-spacing: 2px; line-height: 1; }
 .note .when { font-size: 13px; opacity: .7; }
 .note .srv { font-size: 14px; font-weight: 600; }
+.note .who { font: 800 17px/1.2 var(--display); color: var(--wine); }
 .note p { margin: 0; font-size: 16px; line-height: 1.4; }
 .note .price { font-size: 14px; opacity: .8; }
 .note .price b { display: block; font-size: 16px; font-weight: 600; opacity: 1; }
@@ -244,8 +245,8 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
 <script>
 (function () {
   var h = document.documentElement;
-  if (window.matchMedia && !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('motion');
-  setTimeout(function () { if (!window.__motionReady) h.classList.remove('motion'); }, 3000);
+  if (window.matchMedia && !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('anim');
+  setTimeout(function () { if (!window.__motionReady) h.classList.remove('anim'); }, 3000);
 })();
 </script>
 </head>
@@ -324,17 +325,13 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
 
 <section class="band motion" aria-labelledby="t3">
   <div class="in">
-    <div class="head"><h2 id="t3">Моушн-дизайн</h2><p class="sub">Анимация в After Effects: инфографика, сцены, интро.</p></div>
+    <div class="head"><h2 id="t3">Моушн-дизайн</h2><p class="sub">Анимация в After Effects: инфографика, сцены, интро и оживление логотипов.</p></div>
     <div class="mosaic h" data-clips="olimp,intro,winter"></div>
+    <div class="subhead"><h3>Анимация логотипов</h3><p class="sub">Превращаю статичный знак в короткую заставку для канала, рекламы или презентации.</p></div>
+    <div class="five h" data-clips="blind,logo1,logo3"></div>
   </div>
 </section>
 
-<section class="band logos" aria-labelledby="t4">
-  <div class="in">
-    <div class="head"><h2 id="t4">Логотипы</h2><p class="sub">Оживляю логотипы: превращаю статичный знак в короткую заставку для канала, рекламы или презентации.</p></div>
-    <div class="mosaic h" data-clips="blind,logo1,logo3"></div>
-  </div>
-</section>
 
 <section class="band about" id="about" aria-labelledby="t9">
   <div class="in about-grid">
@@ -388,7 +385,7 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
 <section class="band said" id="reviews" aria-labelledby="t6">
   <div class="in">
     <h2 id="t6">Клиенты пишут</h2>
-    <p class="sub">30 отзывов на Профи.ру, у всех 5 звёзд. Здесь коротко о каждом.</p>
+    <p class="sub">30 отзывов на Профи.ру, у всех 5 звёзд. Здесь коротко о каждом, полные тексты — на Профи.ру.</p>
     <div class="rail notes" id="notes" tabindex="0" aria-label="Лента отзывов"></div>
     <div class="actions"><a class="ghost" href="https://profi.ru/profile/MatsiyevskiyAR/#reviews-tab" target="_blank" rel="noopener">Читать отзывы на Профи.ру</a></div>
   </div>
@@ -451,42 +448,42 @@ document.querySelectorAll('[data-show]').forEach(function (box) {
   box.parentNode.insertBefore(more, box.nextSibling);
 });
 var NOTES = [
-  ['4 февраля 2026', 'Видеомонтаж', 'Приятное общение и заметная вовлечённость. Результат оказался лучше ожиданий.'],
-  ['26 октября 2025', 'Видеомонтаж', 'Сделал максимум, чтобы исправить свадебное видео, и снизил цену. Клиент рекомендует.'],
-  ['20 октября 2025', 'Видеомонтаж', 'Сложная задача, скудные исходники и короткий срок, а видео получилось качественным.'],
-  ['16 августа 2025', 'Видеомонтаж', 'Собрал полноценные ролики из свадебных видео, снятых на телефоны. Результат превзошёл ожидания.'],
-  ['8 июля 2025', 'Видеомонтаж', 'Взял заказ быстрее всех. Дороже других, но результат стоит больше оплаченного.'],
-  ['5 июля 2025', 'Видеомонтаж', 'Профессионально и быстро. Клиенты рады, что обратились.'],
-  ['15 сентября 2024', 'Дудл-видео', 'Внимание к деталям и отличный ролик за короткий срок.'],
-  ['22 августа 2024', 'Видеомонтаж', 'Соблюдены референсы и сроки, личный подход и полезные советы. Клиент вернётся снова.'],
-  ['1 мая 2024', 'Видеомонтаж', 'Монтаж для YouTube-канала на 10 из 10: быстро, качественно и ответственно.'],
-  ['17 апреля 2024', 'Видеомонтаж', 'Быстрый, чёткий и качественный монтаж, работать приятно.'],
-  ['9 апреля 2024', 'Видеомонтаж', 'Видеопоздравление бабушке удалось: быстро и точно как задумано.'],
-  ['14 марта 2024', 'Видеомонтаж', 'Чёткая работа по делу.'],
-  ['14 марта 2024', 'Видеомонтаж', 'Справился со сложным заданием и сразу понял задачу.'],
-  ['10 марта 2024', 'Видеомонтаж', 'Отличный монтаж, клиент рекомендует.'],
-  ['8 марта 2024', 'Видеомонтаж', 'Оперативно закрыл задачу, чётко её понял и уложился в сроки.'],
-  ['7 марта 2024', 'Создание интро', 'Быстрая работа, все правки внесены.'],
-  ['7 марта 2024', 'Видеомонтаж', 'Сжатые сроки, учтены все корректировки. Клиенты планируют вернуться.'],
-  ['5 марта 2024', 'Оживающая фотография', 'Оперативно, быстро и качественно. Клиент очень доволен.'],
-  ['4 марта 2024', 'Видеомонтаж', 'Быстро, качественно и именно так, как хотелось.'],
-  ['28 февраля 2024', 'Видеомонтаж', 'Конструктивно довёл работу до результата, который устроил всех. Зрители остались довольны.'],
-  ['26 февраля 2024', 'Видеомонтаж', 'Видео о строительстве и реставрации оправдало ожидания. Благодарность и от лица строителей.'],
-  ['11 февраля 2024', 'Видеомонтаж', 'Быстрая и качественная работа, клиент очень доволен результатом.'],
-  ['25 января 2024', 'Видеомонтаж', 'Оперативно и качественно. Клиент рекомендует и обратится снова.'],
-  ['25 января 2024', 'Анимация логотипа', 'Учёл все дополнения, которые появились уже в процессе работы.'],
-  ['8 января 2024', 'Видеомонтаж', 'Быстрая связь, спокойное общение, монтаж по ТЗ. Сотрудничество продолжится.'],
-  ['6 января 2024', 'Моушн-дизайн', 'Быстрое выполнение, оперативные ответы и правки. Надёжно и качественно.'],
-  ['30 декабря 2023', 'Видеомонтаж', 'Качественно и оперативно.'],
-  ['27 декабря 2023', 'Видеомонтаж', 'За 5 часов до презентации исправил чужой ролик: музыку, переходы и тайминги. Оценка выше пятёрки.'],
-  ['14 марта 2023', 'Создание интро', 'Сделал заказ очень быстро, заставка уже работает в видеоуроках.'],
-  ['6 марта 2023', 'Flash-анимация', 'Анимация готова очень быстро, переданы все файлы с исходниками.']
+  ['4 февраля 2026', 'Видеомонтаж', 'Приятное общение и заметная вовлечённость. Результат оказался лучше ожиданий.', 'Евгений'],
+  ['26 октября 2025', 'Видеомонтаж', 'Сделал максимум, чтобы исправить свадебное видео, и снизил цену. Клиент рекомендует.', 'Яна'],
+  ['20 октября 2025', 'Видеомонтаж', 'Сложная задача, скудные исходники и короткий срок, а видео получилось качественным.', 'Александра'],
+  ['16 августа 2025', 'Видеомонтаж', 'Собрал полноценные ролики из свадебных видео, снятых на телефоны. Результат превзошёл ожидания.', 'Екатерина'],
+  ['8 июля 2025', 'Видеомонтаж', 'Взял заказ быстрее всех. Дороже других, но результат стоит больше оплаченного.', 'Владимир'],
+  ['5 июля 2025', 'Видеомонтаж', 'Профессионально и быстро. Клиенты рады, что обратились.', 'Алена'],
+  ['15 сентября 2024', 'Дудл-видео', 'Внимание к деталям и отличный ролик за короткий срок.', 'Anton'],
+  ['22 августа 2024', 'Видеомонтаж', 'Соблюдены референсы и сроки, личный подход и полезные советы. Клиент вернётся снова.', 'Милана'],
+  ['1 мая 2024', 'Видеомонтаж', 'Монтаж для YouTube-канала на 10 из 10: быстро, качественно и ответственно.', 'Илья'],
+  ['17 апреля 2024', 'Видеомонтаж', 'Быстрый, чёткий и качественный монтаж, работать приятно.', 'Константин'],
+  ['9 апреля 2024', 'Видеомонтаж', 'Видеопоздравление бабушке удалось: быстро и точно как задумано.', 'Максим'],
+  ['14 марта 2024', 'Видеомонтаж', 'Чёткая работа по делу.', 'Кристина'],
+  ['14 марта 2024', 'Видеомонтаж', 'Справился со сложным заданием и сразу понял задачу.', 'Андрей'],
+  ['10 марта 2024', 'Видеомонтаж', 'Отличный монтаж, клиент рекомендует.', 'Дмитрий'],
+  ['8 марта 2024', 'Видеомонтаж', 'Оперативно закрыл задачу, чётко её понял и уложился в сроки.', 'Елена'],
+  ['7 марта 2024', 'Создание интро', 'Быстрая работа, все правки внесены.', 'Ира'],
+  ['7 марта 2024', 'Видеомонтаж', 'Сжатые сроки, учтены все корректировки. Клиенты планируют вернуться.', 'Артем'],
+  ['5 марта 2024', 'Оживающая фотография', 'Оперативно, быстро и качественно. Клиент очень доволен.', 'Ирина'],
+  ['4 марта 2024', 'Видеомонтаж', 'Быстро, качественно и именно так, как хотелось.', 'Татьяна'],
+  ['28 февраля 2024', 'Видеомонтаж', 'Конструктивно довёл работу до результата, который устроил всех. Зрители остались довольны.', 'Азм Есть'],
+  ['26 февраля 2024', 'Видеомонтаж', 'Видео о строительстве и реставрации оправдало ожидания. Благодарность и от лица строителей.', 'Александр'],
+  ['11 февраля 2024', 'Видеомонтаж', 'Быстрая и качественная работа, клиент очень доволен результатом.', 'Дарья'],
+  ['25 января 2024', 'Видеомонтаж', 'Оперативно и качественно. Клиент рекомендует и обратится снова.', 'Арина'],
+  ['25 января 2024', 'Анимация логотипа', 'Учёл все дополнения, которые появились уже в процессе работы.', 'Александр'],
+  ['8 января 2024', 'Видеомонтаж', 'Быстрая связь, спокойное общение, монтаж по ТЗ. Сотрудничество продолжится.', 'Мария'],
+  ['6 января 2024', 'Моушн-дизайн', 'Быстрое выполнение, оперативные ответы и правки. Надёжно и качественно.', 'Денис'],
+  ['30 декабря 2023', 'Видеомонтаж', 'Качественно и оперативно.', 'Никита'],
+  ['27 декабря 2023', 'Видеомонтаж', 'За 5 часов до презентации исправил чужой ролик: музыку, переходы и тайминги. Оценка выше пятёрки.', 'Артем'],
+  ['14 марта 2023', 'Создание интро', 'Сделал заказ очень быстро, заставка уже работает в видеоуроках.', 'Марина'],
+  ['6 марта 2023', 'Flash-анимация', 'Анимация готова очень быстро, переданы все файлы с исходниками.', 'Анжелика']
 ];
 var notesBox = document.getElementById('notes');
 NOTES.forEach(function (n) {
   var a = document.createElement('article');
   a.className = 'note';
-  a.innerHTML = '<div class="stars" role="img" aria-label="5 звёзд из 5">★★★★★</div><div class="when">' + n[0] + '</div><div class="srv">' + n[1] + '</div><p>' + n[2] + '</p>';
+  a.innerHTML = '<div class="stars" role="img" aria-label="5 звёзд из 5">★★★★★</div><div class="who">' + n[3] + '</div><div class="when">' + n[0] + ' · ' + n[1] + '</div><p>' + n[2] + '</p>';
   notesBox.appendChild(a);
 });
 var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -615,7 +612,7 @@ document.querySelectorAll('video.auto').forEach(function (v) {
   var h = document.documentElement, top = document.getElementById('top');
   function onScroll() { top.classList.toggle('scrolled', window.scrollY > 8); }
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  if (!h.classList.contains('motion')) return;
+  if (!h.classList.contains('anim')) return;
   var hero = document.querySelector('.hero');
   var ws = hero.querySelectorAll('h1 .w'), k = 0;
   ws.forEach(function (w, i) { w.style.setProperty('--i', i); if (w.classList.contains('acc')) w.style.setProperty('--k', k++); });
@@ -644,7 +641,7 @@ document.querySelectorAll('video.auto').forEach(function (v) {
     hero.addEventListener('pointerleave', function () { stack.style.transform = ''; });
   }
   // reveal blocks as they scroll into view
-  var groups = ['.band:not(.hero) h2', '.band:not(.hero) .head .sub', '.band:not(.hero) > .in > .sub', '.mosaic > .clip', '.rail-wrap', '.cards > li', '.price-cards > li', '.steps > li', '.about .me', '.about-text p', '.band:not(.hero) .actions', '.showmore'];
+  var groups = ['.band:not(.hero) h2', '.band:not(.hero) .head .sub', '.subhead', '.five > .clip', '.band:not(.hero) > .in > .sub', '.mosaic > .clip', '.rail-wrap', '.cards > li', '.price-cards > li', '.steps > li', '.about .me', '.about-text p', '.band:not(.hero) .actions', '.showmore'];
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { (e.target._rv || [e.target]).forEach(function (x) { x.classList.add('shown'); }); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
