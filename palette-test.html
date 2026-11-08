@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Пробная палитра — Андрей Мациевский</title>
+<meta name="description" content="Видеомонтажёр: Reels, видео для бизнеса и YouTube, моушн-дизайн и анимация логотипов. Работаю удалённо по всей России.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://matsievskiyio.github.io/">
+<meta property="og:title" content="Андрей Мациевский, видеомонтаж">
+<meta property="og:description" content="Монтаж, после которого ролики досматривают. Reels, видео для бизнеса и YouTube, моушн-дизайн.">
+<meta property="og:image" content="https://matsievskiyio.github.io/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#efe4d8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Unbounded:wght@600;800;900&display=swap">
+<style>
+/* Layout: full-bleed colour bands in a light nude palette: milk, sand, latte, blush, nude rose, with cocoa for type. Single deliberate look. */
+:root {
+  --cobalt: #efe4d8; --yellow: #dcbda9; --pink: #f4e2da; --wine: #a5332e; --teal: #e6d6c8; --paper: #fbf7f2; --ink: #2e2420;
+  --display: "Unbounded", "Arial Black", sans-serif;
+  --body: "Golos Text", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", Menlo, monospace;
+}
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.5 var(--body); }
+.band { padding-block: clamp(56px, 9vw, 112px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.in { max-width: 1200px; margin-inline: auto; display: grid; gap: clamp(24px, 4vw, 44px); min-width: 0; }
+h1, h2 { font-family: var(--display); margin: 0; text-transform: uppercase; }
+h2 { font-weight: 800; font-size: clamp(32px, 7.4vw, 92px); line-height: 1; letter-spacing: -0.02em; text-wrap: balance; overflow-wrap: anywhere; }
+.sub { margin: 0; max-width: 54ch; font-size: clamp(17px, 2vw, 20px); }
+.head { display: grid; gap: 14px; }
+
+/* Header */
+html { scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+.top { position: sticky; top: 0; z-index: 10; background: rgba(251, 247, 242, .94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(46, 36, 32, .12); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.top .bar { max-width: 1200px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 64px; }
+.brand { font: 800 15px/1.1 var(--display); text-transform: uppercase; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.brand b { color: var(--wine); }
+.menu { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+.menu a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; white-space: nowrap; padding-block: 6px; border-bottom: 2px solid transparent; }
+.menu a:hover, .menu a.on { border-color: var(--wine); color: var(--wine); }
+.menu a.tg { background: var(--wine); color: var(--paper); border: 0; border-radius: 99px; padding: 10px 18px; font: 800 13px/1.2 var(--display); text-transform: uppercase; }
+.menu a.tg:hover { color: var(--paper); filter: brightness(1.1); }
+.burger { all: unset; display: none; cursor: pointer; font: 800 13px/1 var(--display); text-transform: uppercase; color: var(--ink); border: 2px solid var(--ink); border-radius: 99px; min-height: 44px; box-sizing: border-box; padding: 14px 16px; }
+.burger:focus-visible, .menu a:focus-visible, .brand:focus-visible { outline: 3px solid var(--wine); outline-offset: 3px; }
+@media (max-width: 1099px) {
+  .top .bar { min-height: 56px; }
+  .burger { display: inline-block; }
+  .menu { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); border-bottom: 1px solid rgba(46, 36, 32, .12); box-shadow: 0 14px 24px rgba(46, 36, 32, .12); padding: 8px max(16px, env(safe-area-inset-left, 0px)) 18px; }
+  .top.open .menu { display: flex; }
+  .menu a { font-size: 18px; padding: 14px 0; border-bottom: 1px solid rgba(46, 36, 32, .1); }
+  .menu a.tg { margin-top: 14px; text-align: center; padding: 16px; font-size: 14px; }
+}
+@media (min-width: 1100px) { .stick { display: none !important; } }
+
+/* Motion */
+h1 .w { display: inline-block; }
+h1 .acc { color: var(--wine); }
+.top { transition: box-shadow .3s; }
+.top.scrolled { box-shadow: 0 8px 24px rgba(46, 36, 32, .1); }
+.stack { transition: transform .5s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
+.anim .hero .eyebrow, .anim .hero h1 .w, .anim .hero-copy > *, .anim .stack video { opacity: 0; }
+.anim .hero.go .eyebrow { animation: drop .7s cubic-bezier(.2, .8, .2, 1.2) .05s both; }
+.anim .hero.go h1 .w { animation: rise .8s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(.15s + var(--i) * .06s); }
+.anim .hero.go h1 .acc { animation: rise .8s cubic-bezier(.2, .8, .2, 1) both, tint .7s ease both; animation-delay: calc(.15s + var(--i) * .06s), calc(1s + var(--k) * .18s); }
+.anim .hero.go .hero-copy > * { animation: up .8s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(.75s + var(--i) * .09s); }
+.anim .hero.go .stack video { animation: deal 1s cubic-bezier(.2, .9, .25, 1.1) both; }
+.anim .hero.go .stack video:nth-child(1) { animation-delay: .55s; }
+.anim .hero.go .stack video:nth-child(2) { animation-delay: .4s; }
+.anim .hero.go .stack video:nth-child(3) { animation-delay: .7s; }
+@keyframes drop { from { opacity: 0; translate: 0 -24px; rotate: -8deg; } to { opacity: 1; translate: 0 0; rotate: 0deg; } }
+@keyframes rise { from { opacity: 0; translate: 0 .7em; rotate: 3deg; } to { opacity: 1; translate: 0 0; rotate: 0deg; } }
+@keyframes up { from { opacity: 0; translate: 0 22px; } to { opacity: 1; translate: 0 0; } }
+@keyframes deal { from { opacity: 0; translate: 0 90px; scale: .85; } to { opacity: 1; translate: 0 0; scale: 1; } }
+@keyframes tint { from { color: var(--ink); } to { color: var(--wine); } }
+.anim .rv { opacity: 0; translate: 0 34px; transition: opacity .8s cubic-bezier(.2, .7, .2, 1), translate .8s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s); }
+.anim h2.rv { opacity: 1; translate: 0 .35em; clip-path: inset(0 0 100% 0); transition: clip-path .8s cubic-bezier(.6, 0, .2, 1), translate .8s cubic-bezier(.2, .7, .2, 1); }
+.anim .rv.shown { opacity: 1; translate: 0 0; }
+.anim h2.rv.shown { clip-path: inset(-.2em -.2em -.3em -.2em); }
+.anim .cta { animation: pulse 3.2s ease-in-out 2.4s infinite; }
+.anim .stick { animation: none; }
+@keyframes pulse { 0%, 82%, 100% { box-shadow: 0 0 0 0 rgba(165, 51, 46, 0); } 88% { box-shadow: 0 0 0 10px rgba(165, 51, 46, .18); } 96% { box-shadow: 0 0 0 16px rgba(165, 51, 46, 0); } }
+
+/* Hero */
+.hero { overflow-x: clip; background: var(--cobalt); color: var(--ink); padding-block: clamp(36px, 6vw, 72px) clamp(48px, 7vw, 88px); }
+h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; letter-spacing: -0.03em; max-width: 15ch; text-wrap: balance; }
+.eyebrow { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; font: 800 clamp(15px, 1.7vw, 19px)/1.2 var(--display); text-transform: uppercase; }
+.eyebrow .role { background: var(--wine); color: var(--paper); padding: .35em .6em; border-radius: .3em; transform: rotate(-1.2deg); }
+.hero-head { display: grid; gap: clamp(14px, 2vw, 22px); }
+.hero-grid { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 820px) { .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.hero-copy { display: grid; gap: 22px; justify-items: start; min-width: 0; }
+.lead { margin: 0; font-size: clamp(17px, 1.9vw, 21px); line-height: 1.45; font-weight: 500; max-width: 46ch; }
+.tools { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tools li { border: 2px solid var(--ink); border-radius: 99px; padding: 7px 16px; font-weight: 600; font-size: 15px; line-height: 1.2; }
+.where { margin: 0; font-size: 15px; opacity: .88; }
+.stats { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: 100%; border-block: 2px solid rgba(46, 36, 32, .18); padding-block: 16px; }
+.stats div { display: grid; gap: 4px; align-content: start; min-width: 0; }
+.stats dd { margin: 0; font: 800 clamp(24px, 3.4vw, 38px)/1 var(--display); color: var(--wine); }
+.stats dt { font-size: 14px; line-height: 1.3; }
+.cta { display: inline-block; background: var(--wine); color: var(--paper); font: 800 clamp(14px, 1.6vw, 17px)/1.2 var(--display); text-decoration: none; text-transform: uppercase; padding: 18px 26px; border-radius: 99px; transition: transform .18s; }
+.cta:hover { transform: translateY(-3px) rotate(-1.5deg); }
+.stack { display: flex; justify-content: center; align-items: center; min-width: 0; padding-block: 12px; }
+.stack video { width: min(31%, 190px); aspect-ratio: 9/16; object-fit: cover; border-radius: 16px; border: 4px solid var(--paper); background: var(--teal); display: block; }
+.stack video:nth-child(1) { transform: rotate(-7deg) translateX(12%); }
+.stack video:nth-child(2) { transform: translateY(-5%) scale(1.1); z-index: 1; }
+.stack video:nth-child(3) { transform: rotate(7deg) translateX(-12%); }
+
+/* Ticker */
+.ticker { background: var(--yellow); color: var(--ink); overflow: hidden; white-space: nowrap; font: 800 clamp(15px, 2vw, 22px)/1 var(--display); text-transform: uppercase; padding-block: 16px; }
+.ticker div { display: inline-block; animation: run 28s linear infinite; }
+.ticker span { padding-inline: 16px; }
+.ticker i { font-style: normal; color: var(--wine); }
+@keyframes run { to { transform: translateX(-50%); } }
+
+/* Clips */
+.clip { all: unset; display: grid; gap: 10px; cursor: pointer; min-width: 0; width: 100%; box-sizing: border-box; }
+.clip .frame { position: relative; display: block; overflow: hidden; border-radius: 14px; background: var(--ink); transition: transform .22s; }
+.clip:hover .frame { transform: translateY(-5px) rotate(-.6deg); }
+.clip:focus-visible .frame { outline: 4px solid currentColor; outline-offset: 3px; }
+.clip img, .clip video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.clip video { opacity: 0; transition: opacity .2s; }
+.clip.live video { opacity: 1; }
+.h .frame { aspect-ratio: 16/9; }
+.v .frame { aspect-ratio: 9/16; }
+.play { position: absolute; right: 12px; bottom: 12px; width: 46px; height: 46px; border-radius: 50%; background: var(--yellow); display: grid; place-items: center; }
+.play::before { content: ""; border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent var(--ink); margin-left: 3px; }
+.cap { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-weight: 500; font-size: 15px; line-height: 1.3; }
+.cap time { font: 500 13px var(--mono); flex: none; opacity: .75; }
+
+.promo { background: var(--paper); color: var(--ink); }
+.promo h2 { color: var(--wine); }
+.two { display: grid; gap: 22px; }
+@media (min-width: 760px) { .two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.reels { background: var(--yellow); }
+.rail { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(170px, 20vw, 225px); align-items: start; gap: 16px; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 14px; scrollbar-color: var(--ink) transparent; }
+.rail .clip { scroll-snap-align: start; }
+[hidden] { display: none !important; }
+.reels { --band: var(--yellow); }
+.clinic { --band: var(--paper); }
+.rail-wrap { position: relative; min-width: 0; }
+.rail-wrap::after { content: ""; position: absolute; top: 0; right: 0; bottom: 14px; width: min(26%, 150px); background: linear-gradient(to right, transparent, var(--band)); pointer-events: none; transition: opacity .2s; }
+.rail-wrap.at-end::after { opacity: 0; }
+.rail::-webkit-scrollbar { display: none; }
+.rail { scrollbar-width: none; }
+.more, .back { all: unset; position: absolute; z-index: 2; top: 38%; cursor: pointer; background: var(--wine); color: var(--paper); font: 800 14px/1 var(--display); text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; padding: 16px 20px; border-radius: 99px; box-shadow: 0 8px 22px rgba(46, 36, 32, .3); transition: transform .18s; }
+.more { right: 8px; }
+.back { left: 8px; padding: 16px 18px; }
+.more:hover { transform: translateX(4px); }
+.back:hover { transform: translateX(-4px); }
+.more:focus-visible, .back:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.more b { font-size: 20px; font-weight: 800; }
+.back b { font-size: 20px; font-weight: 800; }
+
+.clinic { background: var(--paper); color: var(--ink); }
+.clinic h2 { color: var(--wine); font-size: clamp(21px, 2.9vw, 36px); line-height: 1.15; overflow-wrap: normal; }
+.motion { background: var(--pink); color: var(--wine); }
+.showmore { justify-self: start; cursor: pointer; background: transparent; }
+.stick { position: fixed; z-index: 5; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 10px 26px rgba(46, 36, 32, .32); padding: 15px 22px; }
+@media (max-width: 819px) { .stack { order: -1; } .stick { font-size: 13px; padding: 15px 20px; min-height: 48px; box-sizing: border-box; box-shadow: 0 6px 16px rgba(46, 36, 32, .28); } }
+.motion .sub, .motion .cap { color: var(--ink); }
+.mosaic { display: grid; gap: 22px; }
+@media (min-width: 760px) { .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mosaic .clip:first-child { grid-column: 1 / -1; } }
+
+.five { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.subhead { display: grid; gap: 8px; margin-top: clamp(8px, 2vw, 20px); }
+.subhead h3 { margin: 0; font: 800 clamp(20px, 2.6vw, 30px)/1.1 var(--display); text-transform: uppercase; color: var(--wine); }
+
+.serv { background: var(--cobalt); color: var(--ink); }
+.prices { background: var(--paper); color: var(--ink); }
+.prices h2 { color: var(--wine); }
+.price-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.price-cards li { background: var(--pink); border-radius: 14px; padding: clamp(22px, 3vw, 34px); display: grid; gap: 8px; align-content: start; }
+.price-cards h3 { margin: 0; font: 800 clamp(16px, 1.6vw, 19px)/1.2 var(--display); text-transform: uppercase; min-height: 2.4em; }
+.price-cards p { margin: 0; }
+.price-cards .amount { font: 800 clamp(26px, 3vw, 38px)/1.05 var(--display); color: var(--wine); margin-top: 8px; white-space: nowrap; }
+.steps-band { background: var(--cobalt); color: var(--ink); }
+.steps-band h2 { color: var(--wine); }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.steps li { counter-increment: step; background: var(--paper); border-radius: 14px; padding: 22px; display: grid; gap: 8px; align-content: start; }
+.steps li::before { content: counter(step); font: 800 34px/1 var(--display); color: var(--wine); }
+.steps h3 { margin: 0; font: 800 16px/1.25 var(--display); text-transform: uppercase; }
+.steps p { margin: 0; font-size: 16px; line-height: 1.4; }
+.price-cards .unit { font-size: 15px; opacity: .8; margin-bottom: 8px; }
+.about { background: var(--pink); color: var(--ink); }
+.about h2 { color: var(--wine); }
+.about-grid { align-items: center; }
+@media (min-width: 820px) { .about-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+.me { display: block; width: 100%; max-width: 480px; aspect-ratio: 4/5; object-fit: cover; object-position: 75% 65%; border-radius: 14px; }
+.about-text { display: grid; gap: 16px; min-width: 0; }
+.about-text p { margin: 0; max-width: 58ch; font-size: clamp(17px, 1.8vw, 19px); }
+.serv h2 { color: var(--wine); }
+.cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.cards li { background: var(--paper); border-radius: 14px; padding: 24px; display: grid; gap: 10px; align-content: start; transition: transform .18s; }
+.cards li:hover { transform: translateY(-4px); }
+.cards h3 { margin: 0; font: 800 clamp(17px, 1.7vw, 20px)/1.2 var(--display); color: var(--wine); text-transform: uppercase; }
+.cards p { margin: 0; font-size: 16px; line-height: 1.4; }
+.said { --band: var(--pink); }
+.rail.notes { grid-auto-columns: clamp(270px, 30vw, 350px); align-items: stretch; }
+.note { scroll-snap-align: start; background: var(--paper); border-radius: 14px; padding: 22px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.note .stars { color: #b3700c; font-size: 18px; letter-spacing: 2px; line-height: 1; }
+.note .when { font-size: 13px; opacity: .7; }
+.note .srv { font-size: 14px; font-weight: 600; }
+.note .who { font: 800 17px/1.2 var(--display); color: var(--wine); }
+.note p { margin: 0; font-size: 16px; line-height: 1.4; }
+.note .price { font-size: 14px; opacity: .8; }
+.note .price b { display: block; font-size: 16px; font-weight: 600; opacity: 1; }
+.actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; }
+.ghost { display: inline-flex; align-items: center; color: var(--wine); border: 2px solid var(--wine); border-radius: 99px; padding: 14px 24px; font: 800 clamp(13px, 1.5vw, 16px)/1.2 var(--display); text-transform: uppercase; text-decoration: none; transition: background .18s, color .18s; }
+.ghost:hover { background: var(--wine); color: var(--paper); }
+.ghost.nick { text-transform: none; font-size: clamp(15px, 2.2vw, 22px); padding-inline: 28px; }
+
+.said { background: var(--pink); color: var(--ink); }
+.said h2 { color: var(--wine); }
+.quotes { display: grid; gap: 32px; }
+@media (min-width: 820px) { .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+blockquote { margin: 0; font: 600 clamp(19px, 2.2vw, 26px)/1.3 var(--display); }
+blockquote footer { margin-top: 12px; font: 400 14px/1.4 var(--body); opacity: .85; }
+
+.end { background: var(--yellow); }
+.end .in { justify-items: start; }
+.end .cta { font-size: clamp(15px, 2.2vw, 22px); padding: 22px 32px; }
+.handle { font: 500 16px var(--mono); margin: 0; user-select: all; }
+
+/* Viewer */
+dialog { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); width: 100%; overflow: visible; }
+dialog::backdrop { background: rgba(13, 12, 20, .92); }
+dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh; background: var(--ink); border-radius: 12px; object-fit: contain; }
+#lb.vert { max-width: min(92vw, calc((100vh - 190px) * 9 / 16)); }
+#lb.vert video { aspect-ratio: 9/16; max-height: none; }
+.lb-bar { display: flex; justify-content: space-between; align-items: center; gap: 14px; color: var(--paper); padding-block: 12px; font-weight: 500; }
+#lb.failed { max-width: min(92vw, 420px); }
+#lb.failed video { display: none; }
+#lb.failed .lb-bar { flex-direction: column-reverse; align-items: flex-start; }
+#close { all: unset; cursor: pointer; background: var(--yellow); color: var(--ink); font: 800 13px var(--display); text-transform: uppercase; padding: 10px 16px; border-radius: 99px; flex: none; }
+#close:focus-visible { outline: 3px solid var(--paper); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker div { animation: none; }
+  .cta, .clip .frame { transition: none; }
+}
+</style>
+<script>
+(function () {
+  var h = document.documentElement;
+  if (window.matchMedia && !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('anim');
+  setTimeout(function () { if (!window.__motionReady) h.classList.remove('anim'); }, 3000);
+})();
+</script>
+
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Palette test: values from the ui-ux-pro-max design system (Flat Design, creative indigo + hire green) */
+:root {
+  --cobalt: #EEF2FF; --yellow: #C7D2FE; --pink: #E0E7FF; --teal: #EBEFF9; --paper: #FFFFFF; --ink: #312E81; --wine: #6366F1;
+  --hire: #16A34A;
+  --display: "Archivo", "Arial Black", sans-serif;
+  --body: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+}
+.cta, .menu a.tg { background: var(--hire) !important; color: #000 !important; box-shadow: none !important; }
+.top { background: rgba(255, 255, 255, .94); }
+.clip .frame, .cards li, .price-cards li, .steps li, .note { box-shadow: none; border: 1px solid #C7D2FE; }
+.stack video { border-color: #FFFFFF; }
+h1 .acc, .anim .hero.go h1 .acc { color: var(--wine); animation-name: rise; }
+.palette-note { position: fixed; z-index: 20; left: 50%; bottom: 14px; transform: translateX(-50%); background: #312E81; color: #fff; font: 500 14px/1.3 var(--body); padding: 10px 16px; border-radius: 99px; white-space: nowrap; }
+.palette-note a { color: #C7D2FE; }
+@media (max-width: 1099px) { .palette-note { bottom: auto; top: 64px; font-size: 12px; } }
+</style>
+</head>
+<body>
+<div class="palette-note">Пробная палитра из скилла · <a href="./">основной сайт</a></div>
+<header class="top" id="top">
+  <div class="bar">
+    <a class="brand" href="#">Андрей <b>Мациевский</b></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu">Меню</button>
+    <nav class="menu" id="menu" aria-label="Разделы сайта">
+      <a href="#works">Работы</a>
+      <a href="#about">Обо мне</a>
+      <a href="#prices">Цены</a>
+      <a href="#steps">Как работаю</a>
+      <a href="#reviews">Отзывы</a>
+      <a class="tg" href="https://t.me/a_ndrey_MR" target="_blank" rel="noopener">Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<section class="band hero">
+  <div class="in">
+    <div class="hero-head">
+      <p class="eyebrow"><span class="role">Видеомонтажёр</span></p>
+      <h1 aria-label="Монтаж, после которого ролики досматривают"><span class="w" aria-hidden="true">Монтаж,</span> <span class="w" aria-hidden="true">после</span> <span class="w" aria-hidden="true">которого</span> <span class="w acc" aria-hidden="true">ролики</span> <span class="w acc" aria-hidden="true">досматривают</span></h1>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="lead">Reels, интервью с экспертами, YouTube-выпуски и моушн-дизайн. Монтаж в ритм, звук, цветокоррекция и графика.</p>
+        <ul class="tools" aria-label="Программы">
+          <li>Premiere Pro</li>
+          <li>After Effects</li>
+        </ul>
+        <dl class="stats">
+          <div><dd>2017</dd><dt>монтирую с этого года</dt></div>
+          <div><dd data-count="5" data-dec="1">5,0</dd><dt>рейтинг на Профи.ру</dt></div>
+          <div><dd data-count="30" data-suffix="+">30+</dd><dt>довольных клиентов</dt></div>
+        </dl>
+        <p class="where">Работаю из Московской области, беру проекты удалённо по всей России.</p>
+        <a class="cta" href="https://t.me/a_ndrey_MR" target="_blank" rel="noopener">Написать в Telegram</a>
+      </div>
+      <div class="stack" aria-hidden="true">
+        <video class="auto" muted loop playsinline preload="metadata" poster="media/sp1.jpg" src="media/prev/sp1.mp4"></video>
+        <video class="auto" muted loop playsinline preload="metadata" poster="media/cl1.jpg" src="media/prev/cl1.mp4"></video>
+        <video class="auto" muted loop playsinline preload="metadata" poster="media/chem.jpg" src="media/prev/chem.mp4"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div>
+  <span>Reels</span><i>✦</i><span>Промо</span><i>✦</i><span>YouTube</span><i>✦</i><span>Моушн-дизайн</span><i>✦</i><span>Логотипы</span><i>✦</i><span>Интро</span><i>✦</i><span>Саунд-дизайн</span><i>✦</i><span>Цветокоррекция</span><i>✦</i>
+  <span>Reels</span><i>✦</i><span>Промо</span><i>✦</i><span>YouTube</span><i>✦</i><span>Моушн-дизайн</span><i>✦</i><span>Логотипы</span><i>✦</i><span>Интро</span><i>✦</i><span>Саунд-дизайн</span><i>✦</i><span>Цветокоррекция</span><i>✦</i>
+</div></div>
+
+<section class="band promo" id="works" aria-labelledby="t1">
+  <div class="in">
+    <div class="head"><h2 id="t1">Промо и нарезки</h2><p class="sub">Спортивные промо и динамичные нарезки, которые цепляют с первых секунд: монтаж в ритм музыки, цветокоррекция и саунд-дизайн.</p></div>
+    <div class="mosaic h" data-clips="sports,letsgo,robot"></div>
+  </div>
+</section>
+
+<section class="band reels" aria-labelledby="t2">
+  <div class="in">
+    <div class="head"><h2 id="t2">Reels</h2><p class="sub">Вертикальные ролики для соцсетей: спорт, услуги, наука, отдых.</p></div>
+    <div class="rail v" tabindex="0" aria-label="Лента Reels" data-clips="sp1,kvad,mas1,chem,sp5,sp2,mas2,sp3,sp6,sp4,sp7,sp8"></div>
+  </div>
+</section>
+
+<section class="band clinic" aria-labelledby="t8">
+  <div class="in">
+    <div class="head"><h2 id="t8">Видео для стоматологической клиники</h2><p class="sub">Центр Имплантологии Доктора Давтяна: интервью с врачами, ролики об услугах, акции и розыгрыши.</p></div>
+    <div class="mosaic h" data-show="3" data-clips="cl9,cl19,cl7,cl8,cl10"></div>
+    <div class="rail v" tabindex="0" aria-label="Вертикальные ролики для клиники" data-clips="cl1,cl12,cl2,cl18,cl3,cl13,cl4,cl11,cl5,cl6,cl15"></div>
+  </div>
+</section>
+
+<section class="band motion" aria-labelledby="t3">
+  <div class="in">
+    <div class="head"><h2 id="t3">Моушн-дизайн</h2><p class="sub">Анимация в After Effects: инфографика, сцены, интро и оживление логотипов.</p></div>
+    <div class="mosaic h" data-clips="olimp,intro,winter"></div>
+    <div class="subhead"><h3>Анимация логотипов</h3><p class="sub">Превращаю статичный знак в короткую заставку для канала, рекламы или презентации.</p></div>
+    <div class="five h" data-clips="blind,logo1,logo3"></div>
+  </div>
+</section>
+
+
+<section class="band about" id="about" aria-labelledby="t9">
+  <div class="in about-grid">
+    <img class="me" src="media/me.jpg" alt="Андрей Мациевский" loading="lazy" decoding="async">
+    <div class="about-text">
+      <h2 id="t9">Обо мне</h2>
+      <p>Привет! Я Андрей, монтирую видео с 2017 года. Работаю с экспертами и бизнесом, а для души монтирую спорт и ролики о природе.</p>
+      <p>Люблю горы, FPV-дроны и выразительный звук, поэтому много внимания уделяю ритму и саунд-дизайну. Для меня важны качество работы и то, чтобы клиент получал её вовремя.</p>
+      <p>Больше всего люблю постоянные проекты, когда хорошо понимаешь клиента и можешь сделать лучше с каждым роликом.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band serv" aria-labelledby="t5">
+  <div class="in">
+    <h2 id="t5">С чем помогу</h2>
+    <ul class="cards">
+      <li><h3>Reels и Shorts</h3><p>Динамичный монтаж, субтитры и звук для соцсетей.</p></li>
+      <li><h3>Видео для бизнеса</h3><p>Интервью с экспертами, видеоотзывы и ролики об услугах.</p></li>
+      <li><h3>YouTube</h3><p>Монтаж выпусков, графика и заставки для канала.</p></li>
+      <li><h3>Свадьбы и поздравления</h3><p>Соберу историю даже из видео, снятых на телефон.</p></li>
+      <li><h3>Моушн-дизайн</h3><p>Инфографика и анимация в After Effects.</p></li>
+      <li><h3>Логотипы и интро</h3><p>Короткие заставки для брендов и каналов.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band prices" id="prices" aria-labelledby="t10">
+  <div class="in">
+    <div class="head"><h2 id="t10">Цены</h2><p class="sub">Точная стоимость зависит от задачи и материала. Назову её сразу, как только посмотрю ваше видео.</p></div>
+    <ul class="price-cards">
+      <li><h3>Reels</h3><p class="amount">от 2000 ₽</p><p class="unit">за ролик</p><p>Срок работы: 2–3 дня.</p></li>
+      <li><h3>Горизонтальное видео</h3><p class="amount">от 600 ₽</p><p class="unit">за минуту готового видео</p><p>Для YouTube, VK Видео и других площадок. Срок зависит от длины ролика.</p></li>
+      <li><h3>Анимация логотипа</h3><p class="amount">от 2000 ₽</p><p class="unit">за логотип</p><p>Срок зависит от сложности анимации.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band steps-band" id="steps" aria-labelledby="t11">
+  <div class="in">
+    <h2 id="t11">Как я работаю</h2>
+    <ol class="steps">
+      <li><h3>Задача</h3><p>Вы присылаете материал и рассказываете, какое видео нужно.</p></li>
+      <li><h3>Цена и срок</h3><p>Смотрю материал и называю точную стоимость и срок.</p></li>
+      <li><h3>Черновик</h3><p>Монтирую и присылаю первую версию на просмотр.</p></li>
+      <li><h3>Правки и финал</h3><p>Три правки бесплатно, затем отдаю готовый ролик.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band said" id="reviews" aria-labelledby="t6">
+  <div class="in">
+    <h2 id="t6">Клиенты пишут</h2>
+    <p class="sub">30 отзывов на Профи.ру, у всех 5 звёзд. Здесь коротко о каждом, полные тексты — на Профи.ру.</p>
+    <div class="rail notes" id="notes" tabindex="0" aria-label="Лента отзывов"></div>
+    <div class="actions"><a class="ghost" href="https://profi.ru/profile/MatsiyevskiyAR/#reviews-tab" target="_blank" rel="noopener">Читать отзывы на Профи.ру</a></div>
+  </div>
+</section>
+
+<section class="band end" aria-labelledby="t7">
+  <div class="in">
+    <h2 id="t7">Есть видео? Пишите</h2>
+    <p class="sub">Расскажите, что нужно смонтировать и к какому сроку. Подскажу, что можно сделать, и назову цену.</p>
+    <div class="actions">
+      <a class="cta" href="https://t.me/a_ndrey_MR" target="_blank" rel="noopener">Написать в Telegram</a>    </div>
+  </div>
+</section>
+
+<a class="cta stick" id="stick" href="https://t.me/a_ndrey_MR" target="_blank" rel="noopener" hidden>Написать в Telegram</a>
+
+<dialog id="lb" aria-label="Просмотр ролика">
+  <div class="lb-bar"><span id="lb-title"></span><button id="close" type="button">Закрыть</button></div>
+  <video id="lb-video" controls playsinline></video>
+</dialog>
+
+<script>
+var CLIPS = {
+  sports: ['Спортивное промо с саунд-дизайном', '00:56'],
+  letsgo: ['Lets go, кинематографичная нарезка', '01:00'],
+  robot: ['Робототехнический комплекс ОМИЧ', '01:22'],
+  sp1: ['Спорт: барьеры', '00:15'], sp2: ['Спорт: копьё', '00:15'], sp3: ['Спорт: броски', '00:24'], sp4: ['Спорт: тренажёры', '00:16'],
+  sp5: ['Спорт: штанга', '00:39'], sp6: ['Спорт: бег', '00:49'], sp7: ['Спорт: зал', '00:35'], sp8: ['Спорт: подготовка', '00:26'],
+  kvad: ['Отдых на квадроциклах', '01:55'], chem: ['Опыт по химии', '00:19'],
+  mas1: ['Массаж', '00:24'], mas2: ['Массаж, второй ролик', '00:17'],
+  cl1: ['Интервью с врачом', '01:47'], cl2: ['Интервью о враче', '01:05'], cl3: ['Интервью с врачом', '01:02'], cl4: ['Интервью с врачом', '00:44'],
+  cl5: ['Интервью с врачом', '00:57'], cl6: ['Интервью с гигиенистом', '00:50'], cl7: ['Диагностика', '00:58'], cl8: ['Ортопедия', '00:59'],
+  cl9: ['Ортодонтия', '01:31'], cl10: ['Акция на чистку Airflow', '00:31'], cl11: ['Акция на имплантацию', '00:30'], cl12: ['Премии 2ГИС и Яндекс Карт', '00:58'],
+  cl13: ['Подарочные сертификаты', '00:26'], cl15: ['Интервью с субтитрами', '00:54'], cl18: ['Розыгрыш к 8 марта', '00:28'], cl19: ['Детская стоматология', '00:54'],
+  olimp: ['Промо олимпиады по информатике', '00:28'], intro: ['Интро, набор анимаций', '00:24'], winter: ['Зимняя деревня, параллакс', '00:10'],
+  blind: ['BlindWine', '00:10'], logo1: ['travcoding', '00:08'], logo3: ['GRANT', '00:04']
+};
+document.querySelectorAll('[data-clips]').forEach(function (box) {
+  box.dataset.clips.split(',').forEach(function (id) {
+    var c = CLIPS[id], b = document.createElement('button');
+    b.type = 'button'; b.className = 'clip'; b.dataset.id = id;
+    b.setAttribute('aria-label', 'Смотреть со звуком: ' + c[0]);
+    b.innerHTML = '<span class="frame"><img src="media/' + id + '.jpg" alt="" loading="lazy" decoding="async"><video muted loop playsinline preload="none" src="media/prev/' + id + '.mp4"></video><span class="play"></span></span>';
+    var v = b.querySelector('video');
+    b.addEventListener('mouseenter', function () { var p = v.play(); if (p) p.catch(function () {}); });
+    v.addEventListener('playing', function () { b.classList.add('live'); });
+    b.addEventListener('mouseleave', function () { v.pause(); b.classList.remove('live'); });
+    b.addEventListener('click', function () { openClip(id); });
+    box.appendChild(b);
+  });
+});
+document.querySelectorAll('[data-show]').forEach(function (box) {
+  var limit = Number(box.dataset.show), extra = Array.prototype.slice.call(box.children, limit);
+  if (!extra.length) return;
+  extra.forEach(function (c) { c.hidden = true; });
+  var more = document.createElement('button');
+  more.type = 'button'; more.className = 'ghost showmore';
+  more.textContent = 'Показать ещё ' + extra.length;
+  more.addEventListener('click', function () { extra.forEach(function (c) { c.hidden = false; }); more.remove(); });
+  box.parentNode.insertBefore(more, box.nextSibling);
+});
+var NOTES = [
+  ['4 февраля 2026', 'Видеомонтаж', 'Приятное общение и заметная вовлечённость. Результат оказался лучше ожиданий.', 'Евгений'],
+  ['26 октября 2025', 'Видеомонтаж', 'Сделал максимум, чтобы исправить свадебное видео, и снизил цену. Клиент рекомендует.', 'Яна'],
+  ['20 октября 2025', 'Видеомонтаж', 'Сложная задача, скудные исходники и короткий срок, а видео получилось качественным.', 'Александра'],
+  ['16 августа 2025', 'Видеомонтаж', 'Собрал полноценные ролики из свадебных видео, снятых на телефоны. Результат превзошёл ожидания.', 'Екатерина'],
+  ['8 июля 2025', 'Видеомонтаж', 'Взял заказ быстрее всех. Дороже других, но результат стоит больше оплаченного.', 'Владимир'],
+  ['5 июля 2025', 'Видеомонтаж', 'Профессионально и быстро. Клиенты рады, что обратились.', 'Алена'],
+  ['15 сентября 2024', 'Дудл-видео', 'Внимание к деталям и отличный ролик за короткий срок.', 'Anton'],
+  ['22 августа 2024', 'Видеомонтаж', 'Соблюдены референсы и сроки, личный подход и полезные советы. Клиент вернётся снова.', 'Милана'],
+  ['1 мая 2024', 'Видеомонтаж', 'Монтаж для YouTube-канала на 10 из 10: быстро, качественно и ответственно.', 'Илья'],
+  ['17 апреля 2024', 'Видеомонтаж', 'Быстрый, чёткий и качественный монтаж, работать приятно.', 'Константин'],
+  ['9 апреля 2024', 'Видеомонтаж', 'Видеопоздравление бабушке удалось: быстро и точно как задумано.', 'Максим'],
+  ['14 марта 2024', 'Видеомонтаж', 'Чёткая работа по делу.', 'Кристина'],
+  ['14 марта 2024', 'Видеомонтаж', 'Справился со сложным заданием и сразу понял задачу.', 'Андрей'],
+  ['10 марта 2024', 'Видеомонтаж', 'Отличный монтаж, клиент рекомендует.', 'Дмитрий'],
+  ['8 марта 2024', 'Видеомонтаж', 'Оперативно закрыл задачу, чётко её понял и уложился в сроки.', 'Елена'],
+  ['7 марта 2024', 'Создание интро', 'Быстрая работа, все правки внесены.', 'Ира'],
+  ['7 марта 2024', 'Видеомонтаж', 'Сжатые сроки, учтены все корректировки. Клиенты планируют вернуться.', 'Артем'],
+  ['5 марта 2024', 'Оживающая фотография', 'Оперативно, быстро и качественно. Клиент очень доволен.', 'Ирина'],
+  ['4 марта 2024', 'Видеомонтаж', 'Быстро, качественно и именно так, как хотелось.', 'Татьяна'],
+  ['28 февраля 2024', 'Видеомонтаж', 'Конструктивно довёл работу до результата, который устроил всех. Зрители остались довольны.', 'Азм Есть'],
+  ['26 февраля 2024', 'Видеомонтаж', 'Видео о строительстве и реставрации оправдало ожидания. Благодарность и от лица строителей.', 'Александр'],
+  ['11 февраля 2024', 'Видеомонтаж', 'Быстрая и качественная работа, клиент очень доволен результатом.', 'Дарья'],
+  ['25 января 2024', 'Видеомонтаж', 'Оперативно и качественно. Клиент рекомендует и обратится снова.', 'Арина'],
+  ['25 января 2024', 'Анимация логотипа', 'Учёл все дополнения, которые появились уже в процессе работы.', 'Александр'],
+  ['8 января 2024', 'Видеомонтаж', 'Быстрая связь, спокойное общение, монтаж по ТЗ. Сотрудничество продолжится.', 'Мария'],
+  ['6 января 2024', 'Моушн-дизайн', 'Быстрое выполнение, оперативные ответы и правки. Надёжно и качественно.', 'Денис'],
+  ['30 декабря 2023', 'Видеомонтаж', 'Качественно и оперативно.', 'Никита'],
+  ['27 декабря 2023', 'Видеомонтаж', 'За 5 часов до презентации исправил чужой ролик: музыку, переходы и тайминги. Оценка выше пятёрки.', 'Артем'],
+  ['14 марта 2023', 'Создание интро', 'Сделал заказ очень быстро, заставка уже работает в видеоуроках.', 'Марина'],
+  ['6 марта 2023', 'Flash-анимация', 'Анимация готова очень быстро, переданы все файлы с исходниками.', 'Анжелика']
+];
+var notesBox = document.getElementById('notes');
+NOTES.forEach(function (n) {
+  var a = document.createElement('article');
+  a.className = 'note';
+  a.innerHTML = '<div class="stars" role="img" aria-label="5 звёзд из 5">★★★★★</div><div class="who">' + n[3] + '</div><div class="when">' + n[0] + ' · ' + n[1] + '</div><p>' + n[2] + '</p>';
+  notesBox.appendChild(a);
+});
+var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('.rail').forEach(function (rail) {
+  var wrap = document.createElement('div');
+  wrap.className = 'rail-wrap';
+  rail.parentNode.insertBefore(wrap, rail);
+  wrap.appendChild(rail);
+  var more = document.createElement('button'), back = document.createElement('button');
+  more.type = back.type = 'button';
+  more.className = 'more'; back.className = 'back';
+  back.innerHTML = '<b>←</b>'; back.setAttribute('aria-label', 'Предыдущие ролики');
+  wrap.appendChild(back); wrap.appendChild(more);
+  function step(dir) { rail.scrollBy({ left: dir * rail.clientWidth * 0.8, behavior: noMotion ? 'auto' : 'smooth' }); }
+  more.addEventListener('click', function () { step(1); });
+  back.addEventListener('click', function () { step(-1); });
+  function update() {
+    var edge = rail.getBoundingClientRect().right, left = 0;
+    Array.prototype.forEach.call(rail.children, function (c) { if (c.getBoundingClientRect().right > edge + 4) left++; });
+    var end = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 4;
+    more.hidden = end || left === 0;
+    more.innerHTML = 'Ещё ' + left + ' <b>→</b>';
+    more.setAttribute('aria-label', 'Показать ещё ролики: ' + left);
+    back.hidden = rail.scrollLeft < 4;
+    wrap.classList.toggle('at-end', more.hidden);
+  }
+  rail.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+});
+(function () {
+  var stick = document.getElementById('stick');
+  // the floating button stays hidden while any part of the first screen or the final contact block is visible
+  var targets = [document.querySelector('.hero'), document.querySelector('.end')];
+  var seen = new Set();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+    stick.hidden = seen.size > 0;
+  });
+  targets.forEach(function (t) { io.observe(t); });
+})();
+(function () {
+  var top = document.getElementById('top'), burger = top.querySelector('.burger');
+  function setOpen(v) { top.classList.toggle('open', v); burger.setAttribute('aria-expanded', v ? 'true' : 'false'); burger.textContent = v ? 'Закрыть' : 'Меню'; }
+  burger.addEventListener('click', function () { setOpen(!top.classList.contains('open')); });
+  top.querySelectorAll('.menu a, .brand').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  var links = {};
+  top.querySelectorAll('.menu a[href^="#"]').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      Object.keys(links).forEach(function (k) { links[k].classList.toggle('on', k === e.target.id); });
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  Object.keys(links).forEach(function (k) { var el = document.getElementById(k); if (el) spy.observe(el); });
+})();
+var lb = document.getElementById('lb'), lv = document.getElementById('lb-video');
+function openClip(id) {
+  document.querySelectorAll('video').forEach(function (x) { if (x !== lv) x.pause(); });
+  clipToken++; stage = 0; trace = []; currentUrl = 'media/' + id + '.mp4'; setNote('');
+  lb.classList.remove('failed');
+  lb.classList.toggle('vert', !!document.querySelector('.rail.v [data-id="' + id + '"]'));
+  lb.showModal();
+  lv.src = currentUrl;
+  var p = lv.play(); if (p) p.catch(function () {});
+}
+// Three ways to play: direct file, then Blob, then data URL. Some phone in-app browsers reject the first two.
+var clipToken = 0, stage = 0, currentUrl = '', blobUrl = null, clipBlob = null, trace = [];
+var FAIL_NOTE = 'Здесь ролик не открывается. Откройте сайт в Safari или Chrome: в Telegram это значок компаса внизу экрана.';
+function setNote(t) { document.getElementById('lb-title').textContent = t; }
+function showFail() { lb.classList.add('failed'); setNote(FAIL_NOTE); }
+function playFrom(src) {
+  lv.src = src; lv.load();
+  setNote('Нажмите ▶ на видео');
+  var p = lv.play(); if (p) p.catch(function () {});
+}
+function startBlob() {
+  var tok = clipToken;
+  setNote('Загружаю ролик…');
+  fetch(currentUrl).then(function (r) { if (!r.ok) throw new Error('load'); return r.blob(); }).then(function (b) {
+    if (tok !== clipToken) return;
+    clipBlob = new Blob([b], { type: 'video/mp4' });
+    blobUrl = URL.createObjectURL(clipBlob);
+    playFrom(blobUrl);
+  }).catch(function () { if (tok === clipToken) { trace.push('f'); showFail(); } });
+}
+function startData() {
+  var tok = clipToken, reader = new FileReader();
+  setNote('Загружаю ролик…');
+  reader.onload = function () { if (tok === clipToken) playFrom(reader.result); };
+  reader.onerror = function () { if (tok === clipToken) { trace.push('r'); showFail(); } };
+  reader.readAsDataURL(clipBlob);
+}
+lv.addEventListener('error', function () {
+  if (!lv.getAttribute('src')) return;
+  var c = lv.error ? lv.error.code : 0;
+  if (stage === 0) { trace.push('d' + c); stage = 1; startBlob(); }
+  else if (stage === 1) { trace.push('b' + c); stage = 2; startData(); }
+  else if (stage === 2) { trace.push('u' + c); stage = 3; showFail(); }
+});
+lv.addEventListener('playing', function () { setNote(''); });
+function closeClip() {
+  clipToken++; currentUrl = ''; lv.pause(); lv.removeAttribute('src'); lv.load();
+  if (blobUrl) { URL.revokeObjectURL(blobUrl); blobUrl = null; }
+  clipBlob = null; lb.classList.remove('failed');
+  resumeHero();
+}
+document.getElementById('close').addEventListener('click', function () { lb.close(); });
+lb.addEventListener('close', closeClip);
+lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var heroInView = true;
+function resumeHero() {
+  if (calm || !heroInView || lb.open) return;
+  document.querySelectorAll('video.auto').forEach(function (v) { var p = v.play(); if (p) p.catch(function () {}); });
+}
+resumeHero();
+new IntersectionObserver(function (entries) {
+  heroInView = entries[0].isIntersecting;
+  if (heroInView) resumeHero();
+  else document.querySelectorAll('video.auto').forEach(function (v) { v.pause(); });
+}).observe(document.querySelector('.hero .stack'));
+document.querySelectorAll('video.auto').forEach(function (v) {
+  var m = v.getAttribute('src').match(/([^\/]+)\.mp4$/);
+  v.style.cursor = 'pointer';
+  v.addEventListener('click', function () { if (m) openClip(m[1]); });
+});
+
+(function () {
+  window.__motionReady = true;
+  var h = document.documentElement, top = document.getElementById('top');
+  function onScroll() { top.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  if (!h.classList.contains('anim')) return;
+  var hero = document.querySelector('.hero');
+  var ws = hero.querySelectorAll('h1 .w'), k = 0;
+  ws.forEach(function (w, i) { w.style.setProperty('--i', i); if (w.classList.contains('acc')) w.style.setProperty('--k', k++); });
+  hero.querySelectorAll('.hero-copy > *').forEach(function (el, i) { el.style.setProperty('--i', i); });
+  requestAnimationFrame(function () { hero.classList.add('go'); });
+  // count-up for the rating and clients
+  setTimeout(function () {
+    hero.querySelectorAll('[data-count]').forEach(function (dd) {
+      var to = Number(dd.dataset.count), dec = Number(dd.dataset.dec || 0), suf = dd.dataset.suffix || '', t0 = null;
+      function frame(t) {
+        if (t0 === null) t0 = t;
+        var p = Math.min(1, (t - t0) / 1200), e = 1 - Math.pow(1 - p, 3);
+        dd.textContent = (to * e).toFixed(dec).replace('.', ',') + suf;
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+  }, 1100);
+  // gentle tilt of the hero videos following the pointer (desktop only)
+  var stack = hero.querySelector('.stack');
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      stack.style.transform = 'translate(' + (x * 18).toFixed(1) + 'px,' + (y * 14).toFixed(1) + 'px) rotate(' + (x * 2).toFixed(2) + 'deg)';
+    });
+    hero.addEventListener('pointerleave', function () { stack.style.transform = ''; });
+  }
+  // reveal blocks as they scroll into view
+  var groups = ['.band:not(.hero) h2', '.mosaic > .clip', '.five > .clip', '.rail-wrap', '.cards > li', '.price-cards > li', '.steps > li', '.about .me'];
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { (e.target._rv || [e.target]).forEach(function (x) { x.classList.add('shown'); }); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  document.querySelectorAll(groups.join(',')).forEach(function (el) {
+    var sibs = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.tagName === el.tagName; });
+    el.style.setProperty('--d', (Math.min(sibs.indexOf(el), 5) * 0.08) + 's');
+    el.classList.add('rv');
+    // a heading hidden by clip-path never reports an intersection, so watch its parent instead
+    var watch = el.tagName === 'H2' ? el.parentNode : el;
+    if (watch !== el) { (watch._rv = watch._rv || []).push(el); }
+    io.observe(watch);
+  });
+})();
+
+// Metrika goal: any click on a Telegram link
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href*="t.me/"]');
+  if (a && window.ym) ym(114133771, 'reachGoal', 'telegram');
+});
+</script>
+</body>
+</html>

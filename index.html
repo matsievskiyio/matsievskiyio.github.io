@@ -48,7 +48,7 @@ html { scroll-padding-top: 76px; }
 .menu a:hover, .menu a.on { border-color: var(--wine); color: var(--wine); }
 .menu a.tg { background: var(--wine); color: var(--paper); border: 0; border-radius: 99px; padding: 10px 18px; font: 800 13px/1.2 var(--display); text-transform: uppercase; }
 .menu a.tg:hover { color: var(--paper); filter: brightness(1.1); }
-.burger { all: unset; display: none; cursor: pointer; font: 800 13px/1 var(--display); text-transform: uppercase; color: var(--ink); border: 2px solid var(--ink); border-radius: 99px; padding: 10px 16px; }
+.burger { all: unset; display: none; cursor: pointer; font: 800 13px/1 var(--display); text-transform: uppercase; color: var(--ink); border: 2px solid var(--ink); border-radius: 99px; min-height: 44px; box-sizing: border-box; padding: 14px 16px; }
 .burger:focus-visible, .menu a:focus-visible, .brand:focus-visible { outline: 3px solid var(--wine); outline-offset: 3px; }
 @media (max-width: 1099px) {
   .top .bar { min-height: 56px; }
@@ -165,7 +165,7 @@ h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; l
 .motion { background: var(--pink); color: var(--wine); }
 .showmore { justify-self: start; cursor: pointer; background: transparent; }
 .stick { position: fixed; z-index: 5; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 10px 26px rgba(46, 36, 32, .32); padding: 15px 22px; }
-@media (max-width: 819px) { .stack { order: -1; } .stick { font-size: 11px; padding: 10px 14px; box-shadow: 0 6px 16px rgba(46, 36, 32, .28); } }
+@media (max-width: 819px) { .stack { order: -1; } .stick { font-size: 13px; padding: 15px 20px; min-height: 48px; box-sizing: border-box; box-shadow: 0 6px 16px rgba(46, 36, 32, .28); } }
 .motion .sub, .motion .cap { color: var(--ink); }
 .mosaic { display: grid; gap: 22px; }
 @media (min-width: 760px) { .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mosaic .clip:first-child { grid-column: 1 / -1; } }
@@ -206,7 +206,7 @@ h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; l
 .said { --band: var(--pink); }
 .rail.notes { grid-auto-columns: clamp(270px, 30vw, 350px); align-items: stretch; }
 .note { scroll-snap-align: start; background: var(--paper); border-radius: 14px; padding: 22px; display: grid; gap: 8px; align-content: start; min-width: 0; }
-.note .stars { color: #e39a1f; font-size: 18px; letter-spacing: 2px; line-height: 1; }
+.note .stars { color: #b3700c; font-size: 18px; letter-spacing: 2px; line-height: 1; }
 .note .when { font-size: 13px; opacity: .7; }
 .note .srv { font-size: 14px; font-weight: 600; }
 .note .who { font: 800 17px/1.2 var(--display); color: var(--wine); }
@@ -352,7 +352,7 @@ ym(114133771, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: t
 
 <section class="band about" id="about" aria-labelledby="t9">
   <div class="in about-grid">
-    <img class="me" src="media/me.jpg" alt="Андрей Мациевский">
+    <img class="me" src="media/me.jpg" alt="Андрей Мациевский" loading="lazy" decoding="async">
     <div class="about-text">
       <h2 id="t9">Обо мне</h2>
       <p>Привет! Я Андрей, монтирую видео с 2017 года. Работаю с экспертами и бизнесом, а для души монтирую спорт и ролики о природе.</p>
@@ -445,7 +445,7 @@ document.querySelectorAll('[data-clips]').forEach(function (box) {
     var c = CLIPS[id], b = document.createElement('button');
     b.type = 'button'; b.className = 'clip'; b.dataset.id = id;
     b.setAttribute('aria-label', 'Смотреть со звуком: ' + c[0]);
-    b.innerHTML = '<span class="frame"><img src="media/' + id + '.jpg" alt=""><video muted loop playsinline preload="none" src="media/prev/' + id + '.mp4"></video><span class="play"></span></span>';
+    b.innerHTML = '<span class="frame"><img src="media/' + id + '.jpg" alt="" loading="lazy" decoding="async"><video muted loop playsinline preload="none" src="media/prev/' + id + '.mp4"></video><span class="play"></span></span>';
     var v = b.querySelector('video');
     b.addEventListener('mouseenter', function () { var p = v.play(); if (p) p.catch(function () {}); });
     v.addEventListener('playing', function () { b.classList.add('live'); });
@@ -613,11 +613,17 @@ document.getElementById('close').addEventListener('click', function () { lb.clos
 lb.addEventListener('close', closeClip);
 lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
 var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var heroInView = true;
 function resumeHero() {
-  if (calm) return;
+  if (calm || !heroInView || lb.open) return;
   document.querySelectorAll('video.auto').forEach(function (v) { var p = v.play(); if (p) p.catch(function () {}); });
 }
 resumeHero();
+new IntersectionObserver(function (entries) {
+  heroInView = entries[0].isIntersecting;
+  if (heroInView) resumeHero();
+  else document.querySelectorAll('video.auto').forEach(function (v) { v.pause(); });
+}).observe(document.querySelector('.hero .stack'));
 document.querySelectorAll('video.auto').forEach(function (v) {
   var m = v.getAttribute('src').match(/([^\/]+)\.mp4$/);
   v.style.cursor = 'pointer';
@@ -658,7 +664,7 @@ document.querySelectorAll('video.auto').forEach(function (v) {
     hero.addEventListener('pointerleave', function () { stack.style.transform = ''; });
   }
   // reveal blocks as they scroll into view
-  var groups = ['.band:not(.hero) h2', '.band:not(.hero) .head .sub', '.subhead', '.five > .clip', '.band:not(.hero) > .in > .sub', '.mosaic > .clip', '.rail-wrap', '.cards > li', '.price-cards > li', '.steps > li', '.about .me', '.about-text p', '.band:not(.hero) .actions', '.showmore'];
+  var groups = ['.band:not(.hero) h2', '.mosaic > .clip', '.five > .clip', '.rail-wrap', '.cards > li', '.price-cards > li', '.steps > li', '.about .me'];
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { (e.target._rv || [e.target]).forEach(function (x) { x.classList.add('shown'); }); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
