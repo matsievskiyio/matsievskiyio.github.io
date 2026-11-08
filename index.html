@@ -67,26 +67,13 @@ h1 .acc { color: var(--wine); }
 .top.scrolled { box-shadow: 0 8px 24px rgba(46, 36, 32, .1); }
 .stack { transition: transform .5s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
 .anim .hero .eyebrow, .anim .hero h1 .w, .anim .hero-copy > *, .anim .stack video { opacity: 0; }
-.anim .hero.go .eyebrow { animation: drop .7s cubic-bezier(.2, .8, .2, 1.2) .05s both; }
-.anim .hero.go h1 .w { animation: rise .8s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(.15s + var(--i) * .06s); }
-.anim .hero.go h1 .acc { animation: rise .8s cubic-bezier(.2, .8, .2, 1) both, tint .7s ease both; animation-delay: calc(.15s + var(--i) * .06s), calc(1s + var(--k) * .18s); }
-.anim .hero.go .hero-copy > * { animation: up .8s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(.75s + var(--i) * .09s); }
-.anim .hero.go .stack video { animation: deal 1s cubic-bezier(.2, .9, .25, 1.1) both; }
-.anim .hero.go .stack video:nth-child(1) { animation-delay: .55s; }
-.anim .hero.go .stack video:nth-child(2) { animation-delay: .4s; }
-.anim .hero.go .stack video:nth-child(3) { animation-delay: .7s; }
-@keyframes drop { from { opacity: 0; translate: 0 -24px; rotate: -8deg; } to { opacity: 1; translate: 0 0; rotate: 0deg; } }
-@keyframes rise { from { opacity: 0; translate: 0 .7em; rotate: 3deg; } to { opacity: 1; translate: 0 0; rotate: 0deg; } }
-@keyframes up { from { opacity: 0; translate: 0 22px; } to { opacity: 1; translate: 0 0; } }
-@keyframes deal { from { opacity: 0; translate: 0 90px; scale: .85; } to { opacity: 1; translate: 0 0; scale: 1; } }
-@keyframes tint { from { color: var(--ink); } to { color: var(--wine); } }
-.anim .rv { opacity: 0; translate: 0 34px; transition: opacity .8s cubic-bezier(.2, .7, .2, 1), translate .8s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s); }
-.anim h2.rv { opacity: 1; translate: 0 .35em; clip-path: inset(0 0 100% 0); transition: clip-path .8s cubic-bezier(.6, 0, .2, 1), translate .8s cubic-bezier(.2, .7, .2, 1); }
-.anim .rv.shown { opacity: 1; translate: 0 0; }
-.anim h2.rv.shown { clip-path: inset(-.2em -.2em -.3em -.2em); }
-.anim .cta { animation: pulse 3.2s ease-in-out 2.4s infinite; }
-.anim .stick { animation: none; }
-@keyframes pulse { 0%, 82%, 100% { box-shadow: 0 0 0 0 rgba(165, 51, 46, 0); } 88% { box-shadow: 0 0 0 10px rgba(165, 51, 46, .18); } 96% { box-shadow: 0 0 0 16px rgba(165, 51, 46, 0); } }
+.anim .hero.go .eyebrow { animation: up .6s ease-out .05s both; }
+.anim .hero.go h1 .w { animation: up .7s ease-out both; animation-delay: calc(.1s + var(--i) * .04s); }
+.anim .hero.go h1 .acc { animation: up .7s ease-out both; animation-delay: calc(.1s + var(--i) * .04s); }
+.anim .hero.go .hero-copy > * { animation: up .7s ease-out both; animation-delay: calc(.4s + var(--i) * .05s); }
+.anim .hero.go .stack video { animation: fade .9s ease-out .3s both; }
+@keyframes up { from { opacity: 0; translate: 0 12px; } to { opacity: 1; translate: 0 0; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
 /* Hero */
 .hero { overflow-x: clip; background: var(--cobalt); color: var(--ink); padding-block: clamp(36px, 6vw, 72px) clamp(48px, 7vw, 88px); }
@@ -654,29 +641,6 @@ document.querySelectorAll('video.auto').forEach(function (v) {
       requestAnimationFrame(frame);
     });
   }, 1100);
-  // gentle tilt of the hero videos following the pointer (desktop only)
-  var stack = hero.querySelector('.stack');
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    hero.addEventListener('pointermove', function (e) {
-      var r = hero.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-      stack.style.transform = 'translate(' + (x * 18).toFixed(1) + 'px,' + (y * 14).toFixed(1) + 'px) rotate(' + (x * 2).toFixed(2) + 'deg)';
-    });
-    hero.addEventListener('pointerleave', function () { stack.style.transform = ''; });
-  }
-  // reveal blocks as they scroll into view
-  var groups = ['.band:not(.hero) h2', '.mosaic > .clip', '.five > .clip', '.rail-wrap', '.cards > li', '.price-cards > li', '.steps > li', '.about .me'];
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { if (e.isIntersecting) { (e.target._rv || [e.target]).forEach(function (x) { x.classList.add('shown'); }); io.unobserve(e.target); } });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-  document.querySelectorAll(groups.join(',')).forEach(function (el) {
-    var sibs = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.tagName === el.tagName; });
-    el.style.setProperty('--d', (Math.min(sibs.indexOf(el), 5) * 0.08) + 's');
-    el.classList.add('rv');
-    // a heading hidden by clip-path never reports an intersection, so watch its parent instead
-    var watch = el.tagName === 'H2' ? el.parentNode : el;
-    if (watch !== el) { (watch._rv = watch._rv || []).push(el); }
-    io.observe(watch);
-  });
 })();
 
 // Metrika goal: any click on a Telegram link
