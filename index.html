@@ -21,6 +21,7 @@
 <style>
 /* Layout: full-bleed colour bands in a light nude palette: milk, sand, latte, blush, nude rose, with cocoa for type. Single deliberate look. */
 :root {
+  --shadow: 0 8px 20px rgba(46, 36, 32, .16);
   --cobalt: #efe4d8; --yellow: #dcbda9; --pink: #f4e2da; --wine: #a5332e; --teal: #e6d6c8; --paper: #fbf7f2; --ink: #2e2420;
   --display: "Unbounded", "Arial Black", sans-serif;
   --body: "Golos Text", "Helvetica Neue", Arial, sans-serif;
@@ -46,7 +47,7 @@ html { scroll-padding-top: 76px; }
 .skip:focus { top: 12px; }
 .cta:focus-visible, .ghost:focus-visible, .skip:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 .rail:focus-visible { outline: 3px solid var(--wine); outline-offset: 6px; border-radius: 14px; }
-.brand b { color: var(--wine); }
+.brand b { color: var(--wine); margin-left: .35em; }
 .menu { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
 .menu a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; white-space: nowrap; padding-block: 6px; border-bottom: 2px solid transparent; }
 .menu a:hover, .menu a.on { border-color: var(--wine); color: var(--wine); }
@@ -57,7 +58,7 @@ html { scroll-padding-top: 76px; }
 @media (max-width: 1099px) {
   .top .bar { min-height: 56px; }
   .burger { display: inline-block; }
-  .menu { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); border-bottom: 1px solid rgba(46, 36, 32, .12); box-shadow: 0 14px 24px rgba(46, 36, 32, .12); padding: 8px max(16px, env(safe-area-inset-left, 0px)) 18px; }
+  .menu { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); border-bottom: 1px solid rgba(46, 36, 32, .12); box-shadow: var(--shadow); padding: 8px max(16px, env(safe-area-inset-left, 0px)) 18px; }
   .top.open .menu { display: flex; }
   .menu a { font-size: 18px; padding: 14px 0; border-bottom: 1px solid rgba(46, 36, 32, .1); }
   .menu a.tg { margin-top: 14px; text-align: center; padding: 16px; font-size: 14px; }
@@ -68,7 +69,7 @@ html { scroll-padding-top: 76px; }
 h1 .w { display: inline-block; }
 h1 .acc { color: var(--wine); }
 .top { transition: box-shadow .3s; }
-.top.scrolled { box-shadow: 0 8px 24px rgba(46, 36, 32, .1); }
+.top.scrolled { box-shadow: var(--shadow); }
 .stack { transition: transform .5s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
 .anim .hero .eyebrow, .anim .hero h1 .w, .anim .hero-copy > *, .anim .stack video { opacity: 0; }
 .anim .hero.go .eyebrow { animation: up .6s ease-out .05s both; }
@@ -96,8 +97,8 @@ h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; l
 .stats div { display: grid; gap: 4px; align-content: start; min-width: 0; }
 .stats dd { margin: 0; font: 800 clamp(24px, 3.4vw, 38px)/1 var(--display); color: var(--wine); }
 .stats dt { font-size: 14px; line-height: 1.3; }
-.cta { display: inline-block; background: var(--wine); color: var(--paper); font: 800 clamp(14px, 1.6vw, 17px)/1.2 var(--display); text-decoration: none; text-transform: uppercase; padding: 18px 26px; border-radius: 99px; transition: transform .18s; }
-.cta:hover { transform: translateY(-3px) rotate(-1.5deg); }
+.cta { display: inline-block; background: var(--wine); color: var(--paper); font: 800 clamp(14px, 1.6vw, 17px)/1.2 var(--display); text-decoration: none; text-transform: uppercase; padding: 18px 26px; border-radius: 99px; transition: background .18s; }
+.cta:hover { background: #8f2a26; }
 .stack { display: flex; justify-content: center; align-items: center; min-width: 0; padding-block: 12px; }
 .stack video { width: min(31%, 190px); aspect-ratio: 9/16; object-fit: cover; border-radius: 16px; border: 4px solid var(--paper); background: var(--teal); display: block; }
 .stack video:nth-child(1) { transform: rotate(-7deg) translateX(12%); }
@@ -114,7 +115,7 @@ h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; l
 /* Clips */
 .clip { all: unset; display: grid; gap: 10px; cursor: pointer; min-width: 0; width: 100%; box-sizing: border-box; }
 .clip .frame { position: relative; display: block; overflow: hidden; border-radius: 14px; background: var(--ink); transition: transform .22s; }
-.clip:hover .frame { transform: translateY(-5px) rotate(-.6deg); }
+.clip:hover .frame { transform: translateY(-2px); }
 .clip:focus-visible .frame { outline: 4px solid currentColor; outline-offset: 3px; }
 .clip img, .clip video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
 .clip video { opacity: 0; transition: opacity .2s; }
@@ -142,11 +143,11 @@ h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; l
 .rail-wrap.at-end::after { opacity: 0; }
 .rail::-webkit-scrollbar { display: none; }
 .rail { scrollbar-width: none; }
-.more, .back { all: unset; position: absolute; z-index: 2; top: 38%; cursor: pointer; background: var(--wine); color: var(--paper); font: 800 14px/1 var(--display); text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; padding: 16px 20px; border-radius: 99px; box-shadow: 0 8px 22px rgba(46, 36, 32, .3); transition: transform .18s; }
+.more, .back { all: unset; position: absolute; z-index: 2; top: 38%; cursor: pointer; background: var(--wine); color: var(--paper); font: 800 14px/1 var(--display); text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; padding: 16px 20px; border-radius: 99px; box-shadow: var(--shadow); transition: transform .18s; }
 .more { right: 8px; }
 .back { left: 8px; padding: 16px 18px; }
-.more:hover { transform: translateX(4px); }
-.back:hover { transform: translateX(-4px); }
+.more:hover { transform: translateX(2px); }
+.back:hover { transform: translateX(-2px); }
 .more:focus-visible, .back:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 .more b { font-size: 20px; font-weight: 800; }
 .back b { font-size: 20px; font-weight: 800; }
@@ -155,8 +156,8 @@ h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; l
 .clinic h2 { color: var(--wine); font-size: clamp(21px, 2.9vw, 36px); line-height: 1.15; overflow-wrap: normal; }
 .motion { background: var(--pink); color: var(--wine); }
 .showmore { justify-self: start; cursor: pointer; background: transparent; }
-.stick { position: fixed; z-index: 5; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 10px 26px rgba(46, 36, 32, .32); padding: 15px 22px; }
-@media (max-width: 819px) { .stack { order: -1; } .stick { font-size: 14px; padding: 15px 20px; min-height: 48px; box-sizing: border-box; box-shadow: 0 6px 16px rgba(46, 36, 32, .28); } }
+.stick { position: fixed; z-index: 5; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); box-shadow: var(--shadow); padding: 15px 22px; }
+@media (max-width: 819px) { .stack { order: -1; } .stick { font-size: 14px; padding: 15px 20px; min-height: 48px; box-sizing: border-box; box-shadow: var(--shadow); } }
 .motion .sub, .motion .cap { color: var(--ink); }
 .mosaic { display: grid; gap: 22px; }
 @media (min-width: 760px) { .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mosaic .clip:first-child { grid-column: 1 / -1; } }
@@ -191,7 +192,7 @@ h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; l
 .serv h2 { color: var(--wine); }
 .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
 .cards li { background: var(--paper); border-radius: 14px; padding: 24px; display: grid; gap: 10px; align-content: start; transition: transform .18s; }
-.cards li:hover { transform: translateY(-4px); }
+.cards li:hover { transform: translateY(-2px); }
 .cards h3 { margin: 0; font: 800 clamp(17px, 1.7vw, 20px)/1.2 var(--display); color: var(--wine); text-transform: uppercase; }
 .cards p { margin: 0; font-size: 16px; line-height: 1.4; }
 .said { --band: var(--pink); }
@@ -238,6 +239,10 @@ dialog video { display: block; width: 100%; aspect-ratio: 16/9; max-height: 80vh
   .ticker div { animation: none; }
   .cta, .clip .frame { transition: none; }
 }
+/* Quiet labels: capitals and heavy weight stay only on the slogan and section headings */
+.cta, .menu a.tg, .burger, .more, .back, .ghost, #close, .eyebrow, .eyebrow .role,
+.cards h3, .price-cards h3, .steps h3, .subhead h3, .note .who { text-transform: none; font-weight: 600; letter-spacing: 0; }
+.price-cards h3 { min-height: 0; }
 </style>
 <script>
 (function () {
@@ -358,12 +363,12 @@ ym(114133771, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: t
   <div class="in">
     <h2 id="t5">С чем помогу</h2>
     <ul class="cards">
-      <li><h3>Reels и Shorts</h3><p>Динамичный монтаж, субтитры и звук для соцсетей.</p></li>
-      <li><h3>Видео для бизнеса</h3><p>Интервью с экспертами, видеоотзывы и ролики об услугах.</p></li>
-      <li><h3>YouTube</h3><p>Монтаж выпусков, графика и заставки для канала.</p></li>
-      <li><h3>Свадьбы и поздравления</h3><p>Соберу историю даже из видео, снятых на телефон.</p></li>
-      <li><h3>Моушн-дизайн</h3><p>Инфографика и анимация в After Effects.</p></li>
-      <li><h3>Логотипы и интро</h3><p>Короткие заставки для брендов и каналов.</p></li>
+      <li><h3>Reels и Shorts</h3><p>Динамичный монтаж, субтитры и звук для соцсетей</p></li>
+      <li><h3>Видео для бизнеса</h3><p>Интервью с экспертами, видеоотзывы и ролики об услугах</p></li>
+      <li><h3>YouTube</h3><p>Монтаж выпусков, графика и заставки для канала</p></li>
+      <li><h3>Свадьбы и поздравления</h3><p>Соберу историю даже из видео, снятых на телефон</p></li>
+      <li><h3>Моушн-дизайн</h3><p>Инфографика и анимация в After Effects</p></li>
+      <li><h3>Логотипы и интро</h3><p>Короткие заставки для брендов и каналов</p></li>
     </ul>
   </div>
 </section>
@@ -372,9 +377,9 @@ ym(114133771, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: t
   <div class="in">
     <div class="head"><h2 id="t10">Цены</h2><p class="sub">Точная стоимость зависит от задачи и материала. Назову её сразу, как только посмотрю ваше видео.</p></div>
     <ul class="price-cards">
-      <li><h3>Reels</h3><p class="amount">от 2000 ₽</p><p class="unit">за ролик</p><p>Срок работы: 2–3 дня.</p></li>
+      <li><h3>Reels</h3><p class="amount">от 2000 ₽</p><p class="unit">за ролик</p><p>Срок работы: 2–3 дня</p></li>
       <li><h3>Горизонтальное видео</h3><p class="amount">от 600 ₽</p><p class="unit">за минуту готового видео</p><p>Для YouTube, VK Видео и других площадок. Срок зависит от длины ролика.</p></li>
-      <li><h3>Анимация логотипа</h3><p class="amount">от 2000 ₽</p><p class="unit">за логотип</p><p>Срок зависит от сложности анимации.</p></li>
+      <li><h3>Анимация логотипа</h3><p class="amount">от 2000 ₽</p><p class="unit">за логотип</p><p>Срок зависит от сложности анимации</p></li>
     </ul>
   </div>
 </section>
@@ -383,10 +388,10 @@ ym(114133771, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: t
   <div class="in">
     <h2 id="t11">Как я работаю</h2>
     <ol class="steps">
-      <li><h3>Задача</h3><p>Вы присылаете материал и рассказываете, какое видео нужно.</p></li>
-      <li><h3>Цена и срок</h3><p>Смотрю материал и называю точную стоимость и срок.</p></li>
-      <li><h3>Черновик</h3><p>Монтирую и присылаю первую версию на просмотр.</p></li>
-      <li><h3>Правки и финал</h3><p>Три правки бесплатно, затем отдаю готовый ролик.</p></li>
+      <li><h3>Задача</h3><p>Вы присылаете материал и рассказываете, какое видео нужно</p></li>
+      <li><h3>Цена и срок</h3><p>Смотрю материал и называю точную стоимость и срок</p></li>
+      <li><h3>Черновик</h3><p>Монтирую и присылаю первую версию на просмотр</p></li>
+      <li><h3>Правки и финал</h3><p>Три правки бесплатно, затем отдаю готовый ролик</p></li>
     </ol>
   </div>
 </section>
