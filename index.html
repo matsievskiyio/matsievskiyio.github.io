@@ -176,7 +176,7 @@ h1 { font-weight: 900; font-size: clamp(27px, 7.4vw, 92px); line-height: 1.02; l
 .price-cards .amount { font: 800 clamp(26px, 3vw, 38px)/1.05 var(--display); color: var(--wine); margin-top: 8px; white-space: nowrap; }
 .steps-band { background: var(--cobalt); color: var(--ink); }
 .steps-band h2 { color: var(--wine); }
-.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
 .steps li { counter-increment: step; background: var(--paper); border-radius: 14px; padding: 22px; display: grid; gap: 8px; align-content: start; }
 .steps li::before { content: counter(step); font: 800 34px/1 var(--display); color: var(--wine); }
 .steps h3 { margin: 0; font: 800 16px/1.25 var(--display); text-transform: uppercase; }
@@ -390,6 +390,7 @@ ym(114133771, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: t
     <ol class="steps">
       <li><h3>Задача</h3><p>Вы присылаете материал и рассказываете, какое видео нужно</p></li>
       <li><h3>Цена и срок</h3><p>Смотрю материал и называю точную стоимость и срок</p></li>
+      <li><h3>Предоплата</h3><p>Для новых клиентов — 20% от стоимости ролика</p></li>
       <li><h3>Черновик</h3><p>Монтирую и присылаю первую версию на просмотр</p></li>
       <li><h3>Правки и финал</h3><p>Три правки бесплатно, затем отдаю готовый ролик</p></li>
     </ol>
